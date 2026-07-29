@@ -1,0 +1,1701 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!-- generated HTML -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+  --navy:#060e1f;--blue:#0d1f3c;--mid:#122040;
+  --teal:#00c8d4;--teal2:#00e5f0;
+  --gold:#c8a84b;--gold2:#e8c86a;
+  --green:#2d8c4e;--green2:#38b263;
+  --red:#c0392b;--red2:#e74c3c;
+  --text:#e8f0fe;--dim:#5c7a9a;--dim2:#7a99bb;
+  --card:rgba(13,31,60,.95);--card2:rgba(18,32,64,1);--card3:rgba(22,40,80,.8);
+  --border:rgba(0,200,212,.12);--border2:rgba(200,168,75,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{
+  background-color:var(--navy);
+  background-image:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(0,200,212,.08),transparent),
+    radial-gradient(ellipse 50% 30% at 0% 100%,rgba(45,140,78,.06),transparent),
+    radial-gradient(ellipse 50% 30% at 100% 100%,rgba(200,168,75,.06),transparent);
+  color:var(--text);font-family:'Kanit',sans-serif;min-height:100vh;overflow-x:hidden;
+}
+body.has-bg{
+  background-image:none!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-attachment:fixed!important;
+}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:rgba(0,200,212,.3);border-radius:4px;}
+.file-inp{display:none;}
+/* LOGIN */
+#loginOverlay{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#03091a,#060e1f,#03091a);display:flex;align-items:center;justify-content:center;}
+.login-wrap{width:440px;max-width:95vw;}
+.login-logo-block{text-align:center;margin-bottom:24px;}
+.login-league-badge{font-size:1rem;font-weight:800;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-top:10px;}
+.login-box{background:linear-gradient(145deg,var(--card2),var(--card));border:1px solid rgba(0,200,212,.2);border-radius:20px;padding:40px;box-shadow:0 0 60px rgba(0,200,212,.08),0 20px 40px rgba(0,0,0,.6);}
+.login-inp{width:100%;padding:14px 18px;background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:10px;color:white;font-family:'Kanit',sans-serif;font-size:1rem;letter-spacing:5px;text-align:center;transition:.3s;margin-bottom:12px;}
+.login-inp:focus{outline:none;border-color:var(--teal);}
+.login-btn-main{width:100%;padding:14px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--teal));color:white;font-family:'Kanit',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,200,212,.25);}
+.login-btn-view{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--dim2);font-family:'Kanit',sans-serif;font-size:.85rem;cursor:pointer;}
+.login-err{color:var(--red2);font-size:.75rem;text-align:center;min-height:18px;margin-top:4px;}
+.login-hint{text-align:center;margin-top:16px;font-size:.7rem;color:var(--dim);padding:8px;background:rgba(0,200,212,.04);border-radius:8px;border:1px solid var(--border);}
+/* HEADER */
+.hdr{padding:14px 28px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(6,14,31,.98),rgba(6,14,31,.7));border-bottom:1px solid rgba(0,200,212,.15);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);}
+.hdr-left{display:flex;align-items:center;gap:14px;}
+.hdr-logo-btn{width:58px;height:58px;flex-shrink:0;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:.3s;}
+.hdr-logo-btn:hover{transform:scale(1.08);}
+.hdr-logo-btn img{width:100%;height:100%;object-fit:contain;}
+.hdr-league-name{font-size:1.25rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(90deg,var(--teal),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hdr-sub{font-size:.65rem;color:var(--dim2);letter-spacing:1.5px;margin-top:3px;display:flex;align-items:center;gap:6px;}
+.live-dot{width:6px;height:6px;background:var(--red2);border-radius:50%;animation:blink 1s infinite;}
+.admin-badge{background:linear-gradient(135deg,var(--gold),#a07830);color:#000;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:900;}
+.hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+/* MODE BAR */
+.mode-bar{padding:7px 28px;font-size:.72rem;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.mode-bar.view{background:rgba(0,200,212,.05);}
+.mode-bar.admin{background:rgba(200,168,75,.05);border-bottom-color:rgba(200,168,75,.2);}
+.mode-indicator{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.mode-bar.view .mode-indicator{background:var(--teal);}
+.mode-bar.admin .mode-indicator{background:var(--gold);animation:blink .8s infinite;}
+/* NAV */
+.nav{display:flex;gap:4px;padding:8px 28px;background:rgba(6,14,31,.9);border-bottom:1px solid var(--border);overflow-x:auto;backdrop-filter:blur(10px);}
+.nav::-webkit-scrollbar{display:none;}
+.nav-btn{padding:7px 16px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--dim2);cursor:pointer;font-family:'Kanit',sans-serif;font-size:.8rem;white-space:nowrap;transition:.2s;}
+.nav-btn:hover{color:var(--text);border-color:var(--border);}
+.nav-btn.active{background:linear-gradient(135deg,rgba(0,200,212,.18),rgba(0,229,240,.08));color:var(--teal);border-color:rgba(0,200,212,.35);font-weight:700;}
+.nav-btn.admin-tab{color:rgba(200,168,75,.65);border-color:rgba(200,168,75,.15);}
+.nav-btn.admin-tab.active{background:rgba(200,168,75,.1);color:var(--gold);border-color:rgba(200,168,75,.3);}
+/* PAGES */
+.page{display:none;padding:20px 28px;max-width:1900px;margin:0 auto;}
+.page.active{display:block;animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* PANELS */
+.panel{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;margin-bottom:18px;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.panel-hdr{background:var(--card2);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.panel-title{font-size:.85rem;font-weight:700;text-transform:uppercase;color:var(--teal);letter-spacing:1px;}
+.panel-body{padding:14px 16px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+/* STANDINGS */
+.standings-league-header{background:linear-gradient(135deg,#060e1f,#0d1f3c,#122040,#060e1f);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid rgba(0,200,212,.2);position:relative;overflow:hidden;}
+.standings-league-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(0,200,212,.05),transparent);}
+.standings-league-header::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--teal),var(--gold));}
+.standings-league-header>*{position:relative;z-index:1;}
+.league-logo-display{width:80px;height:80px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;filter:drop-shadow(0 0 12px rgba(0,200,212,.4));transition:.3s;}
+.league-logo-display img{width:100%;height:100%;object-fit:contain;}
+.league-title-block{text-align:center;flex:1;padding:0 16px;}
+.league-main-title{font-size:1.5rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;background:linear-gradient(90deg,var(--teal),#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;}
+.league-sub-title{font-size:.72rem;font-weight:600;color:rgba(0,200,212,.8);letter-spacing:2px;margin-top:5px;text-transform:uppercase;}
+.league-motto{font-size:.85rem;color:var(--gold);margin-top:5px;font-weight:600;letter-spacing:1px;}
+.league-season-badge{background:linear-gradient(135deg,rgba(0,200,212,.1),rgba(200,168,75,.08));border:1px solid rgba(200,168,75,.3);border-radius:10px;padding:10px 16px;text-align:center;flex-shrink:0;min-width:72px;}
+.league-season-yr{font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.league-season-lbl{font-size:.56rem;color:var(--dim2);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+.standings-main-layout{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-bottom:18px;align-items:start;}
+.standings-table{width:100%;border-collapse:collapse;}
+.standings-table th{background:rgba(0,200,212,.04);padding:8px 6px;color:var(--dim2);font-weight:600;font-size:.7rem;text-transform:uppercase;text-align:center;border-bottom:1px solid var(--border);}
+.standings-table th.th-left{text-align:left;padding-left:10px;}
+.standings-table td{padding:7px 6px;border-bottom:1px solid rgba(255,255,255,.03);text-align:center;vertical-align:middle;}
+.standings-table tbody tr:hover{background:rgba(0,200,212,.03);}
+.standings-table tbody tr.leader{background:rgba(0,200,212,.05);}
+.t-cell{display:flex;align-items:center;gap:10px;padding-left:8px;}
+.t-logo{width:34px;height:34px;border-radius:50%;flex-shrink:0;overflow:hidden;border:1.5px solid rgba(0,200,212,.3);display:flex;align-items:center;justify-content:center;background:var(--card3);font-size:.65rem;font-weight:800;color:var(--teal);}
+.t-logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.t-name{font-size:.88rem;font-weight:700;}
+.c-pts{color:var(--teal);font-weight:800;font-size:1rem;}
+.c-gf{color:var(--green2);}
+.c-ga{color:var(--red2);}
+.c-gd-p{color:var(--green2);font-weight:700;}
+.c-gd-n{color:var(--red2);font-weight:700;}
+.c-gd-z{color:var(--dim);}
+.rank-badge{width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;}
+.r1{background:rgba(200,168,75,.18);color:var(--gold);}
+.r2{background:rgba(192,192,192,.15);color:#c0c0c0;}
+.r3{background:rgba(180,120,50,.15);color:#b47832;}
+.rN{color:var(--dim);font-size:.75rem;}
+.cell-e{border-radius:4px;padding:2px 5px;display:inline-block;min-width:22px;transition:.15s;}
+.admin-mode .cell-e{cursor:text;}
+.admin-mode .cell-e:hover{background:rgba(0,200,212,.12);}
+.admin-mode .cell-e:focus{background:rgba(255,255,255,.1);outline:2px solid var(--teal);}
+.view-mode .cell-e{cursor:default;pointer-events:none;}
+.legend-row{display:flex;gap:12px;flex-wrap:wrap;padding:8px 14px;background:rgba(0,0,0,.2);border-top:1px solid var(--border);font-size:.68rem;color:var(--dim2);}
+/* MOTM PANEL */
+.motm-panel{background:var(--card);border-radius:14px;border:1px solid var(--border2);overflow:hidden;position:sticky;top:72px;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.motm-panel-hdr{background:linear-gradient(135deg,rgba(200,168,75,.12),rgba(200,168,75,.04));padding:11px 14px;border-bottom:1px solid rgba(200,168,75,.15);display:flex;align-items:center;justify-content:space-between;}
+.motm-panel-title{font-size:.8rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;}
+.motm-tb{width:26px;height:26px;border-radius:7px;border:1px solid rgba(200,168,75,.2);background:rgba(200,168,75,.07);color:var(--gold);cursor:pointer;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.motm-tb.on{background:rgba(200,168,75,.22);border-color:var(--gold);}
+.motm-body{overflow:hidden;transition:max-height .4s ease;}
+.motm-body.collapsed{max-height:220px;}
+.motm-body.expanded{max-height:4000px;}
+.motm-more-hint{text-align:center;padding:8px;font-size:.67rem;color:var(--dim);cursor:pointer;display:none;border-top:1px dashed rgba(200,168,75,.1);}
+.motm-wk-sect{padding:10px 12px;border-bottom:1px solid var(--border);}
+.motm-wk-sect:last-child{border-bottom:none;}
+.motm-wk-label{font-size:.68rem;font-weight:700;color:var(--teal);margin-bottom:8px;}
+.motm-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.motm-slot{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;border:1.5px dashed rgba(200,168,75,.18);background:var(--card3);cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.motm-slot:hover{border-color:var(--gold);transform:scale(1.04);box-shadow:0 6px 18px rgba(200,168,75,.2);}
+.motm-slot.has-photo{border-style:solid;border-color:rgba(200,168,75,.45);}
+.motm-slot-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(.88) contrast(1.05) saturate(1.1);}
+.motm-slot-gradient{position:absolute;bottom:0;left:0;right:0;height:42%;background:linear-gradient(transparent,rgba(0,0,0,.9));}
+.motm-slot-info{position:absolute;bottom:0;left:0;right:0;padding:5px 4px;}
+.motm-slot-name{font-size:.58rem;font-weight:800;color:var(--gold);text-transform:uppercase;line-height:1.1;text-shadow:0 1px 4px rgba(0,0,0,1);}
+.motm-slot-tag{font-size:.42rem;color:rgba(200,168,75,.65);font-weight:600;}
+.motm-slot-vs{font-size:.4rem;color:rgba(0,200,212,.7);}
+.motm-empty-ico{font-size:1.2rem;opacity:.22;}
+.motm-empty-lbl{font-size:.48rem;color:var(--dim);margin-top:3px;}
+.motm-del{position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:rgba(192,57,43,.9);border:none;color:white;font-size:.6rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:10;line-height:1;}
+.admin-mode .motm-slot.has-photo:hover .motm-del{display:flex;}
+/* TOP3 */
+.top3-card{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.top3-hdr{padding:10px 16px;background:var(--card2);border-bottom:1px solid var(--border);font-size:.82rem;font-weight:800;text-transform:uppercase;}
+.top3-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);transition:.2s;}
+.top3-item:last-child{border-bottom:none;}
+.top3-item:hover{background:rgba(0,200,212,.03);}
+.top3-medal{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.m1{background:rgba(200,168,75,.15);box-shadow:0 0 12px rgba(200,168,75,.25);}
+.m2{background:rgba(192,192,192,.12);}
+.m3{background:rgba(180,120,50,.12);}
+.top3-info{flex:1;}
+.top3-name{font-size:.9rem;font-weight:700;}
+.top3-team{font-size:.68rem;color:var(--dim2);margin-top:2px;}
+/* FORMS */
+.form-row{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end;flex-wrap:wrap;}
+.form-row>div{flex:1;min-width:100px;}
+label{font-size:.72rem;color:var(--dim2);margin-bottom:4px;display:block;font-weight:500;}
+.inp,.sel{width:100%;padding:9px 12px;border-radius:8px;background:rgba(0,0,0,.4);border:1px solid var(--border);color:var(--text);font-family:'Kanit',sans-serif;font-size:.85rem;transition:.2s;}
+.inp:focus,.sel:focus{outline:none;border-color:var(--teal);}
+.inp::placeholder{color:var(--dim);}
+.sel option{background:#0d1f3c;}
+/* BUTTONS */
+.btn{padding:8px 16px;border-radius:8px;border:none;font-family:'Kanit',sans-serif;font-size:.82rem;cursor:pointer;font-weight:700;transition:.25s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+.btn-green{background:var(--green);color:white;}
+.btn-blue{background:var(--blue);color:var(--teal);border:1px solid rgba(0,200,212,.3);}
+.btn-red{background:var(--red);color:white;}
+.btn-yellow{background:var(--gold);color:#000;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#a07830);color:#000;font-weight:800;}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--dim2);}
+.btn-teal{background:linear-gradient(135deg,var(--blue),var(--teal));color:#000;font-weight:800;}
+.btn-sm{padding:5px 10px;font-size:.74rem;}
+.btn-xs{padding:4px 8px;font-size:.7rem;}
+.btn-dl{background:linear-gradient(135deg,var(--blue),var(--teal));color:#000;font-weight:800;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-family:'Kanit',sans-serif;font-size:.82rem;box-shadow:0 4px 14px rgba(0,200,212,.2);transition:.2s;display:inline-flex;align-items:center;gap:6px;}
+.btn-dl:hover{transform:translateY(-2px);}
+.btn-dl:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.btn-dl.grp-a{background:linear-gradient(135deg,var(--green),var(--teal));}
+.btn-dl.grp-b{background:linear-gradient(135deg,#7c3aed,var(--blue));}
+.btn-master-reset{padding:7px 14px;border-radius:8px;border:1px solid rgba(192,57,43,.35);background:transparent;color:rgba(231,76,60,.7);cursor:pointer;font-family:'Kanit',sans-serif;font-size:.78rem;font-weight:700;transition:.25s;}
+.btn-master-reset:hover{background:var(--red);color:white;}
+.btn-logo-reset{padding:6px 12px;border-radius:7px;border:1px solid rgba(255,112,67,.4);background:rgba(255,112,67,.08);color:rgba(255,112,67,.9);cursor:pointer;font-family:'Kanit',sans-serif;font-size:.76rem;font-weight:700;display:inline-flex;align-items:center;gap:5px;}
+.btn-logo-reset:hover{background:var(--red);color:white;}
+/* COUNTER BUTTONS — ข้อ 4,5 */
+.counter-wrap{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.btn-counter{width:24px;height:24px;border-radius:6px;border:1px solid rgba(0,200,212,.25);background:rgba(0,200,212,.08);color:var(--teal);cursor:pointer;font-size:.9rem;font-weight:900;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0;line-height:1;}
+.btn-counter:hover{background:rgba(0,200,212,.22);border-color:var(--teal);}
+.btn-counter.minus{border-color:rgba(231,76,60,.25);background:rgba(231,76,60,.08);color:var(--red2);}
+.btn-counter.minus:hover{background:rgba(231,76,60,.22);border-color:var(--red2);}
+.counter-val{min-width:28px;text-align:center;font-weight:800;font-size:.88rem;}
+/* UPDATE BAR */
+.upd-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 16px;margin-bottom:16px;border-radius:10px;background:rgba(255,112,67,.05);border:1px solid rgba(255,112,67,.18);transition:.3s;}
+.upd-bar.dirty{background:rgba(255,112,67,.1);border-color:rgba(255,112,67,.5);}
+.upd-dot{width:8px;height:8px;border-radius:50%;background:var(--dim);flex-shrink:0;}
+.upd-bar.dirty .upd-dot{background:#ff7043;animation:blink 1s infinite;}
+.upd-title{font-size:.82rem;font-weight:600;}
+.upd-bar.dirty .upd-title{color:#ff7043;}
+.upd-sub{font-size:.68rem;color:var(--dim2);}
+.btn-upd{background:linear-gradient(135deg,#ff7043,#ff8a65);color:white;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-family:'Kanit',sans-serif;font-size:.82rem;font-weight:700;opacity:.4;pointer-events:none;}
+.upd-bar.dirty .btn-upd{opacity:1;pointer-events:auto;}
+/* STAT ROWS */
+.stat-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.stat-row:last-child{border-bottom:none;}
+.stat-rank{width:24px;text-align:center;flex-shrink:0;font-size:.85rem;}
+.stat-info{flex:1;min-width:0;}
+.stat-name{font-size:.86rem;font-weight:600;}
+.stat-sub{font-size:.7rem;color:var(--dim2);}
+.stat-val{font-weight:800;font-size:.9rem;min-width:40px;text-align:center;}
+.stat-acts{display:flex;gap:4px;flex-shrink:0;align-items:center;}
+/* MOTM LB */
+.motm-lb-item{background:rgba(200,168,75,.03);border:1px solid rgba(200,168,75,.07);border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px;}
+.motm-lb-info{flex:1;min-width:0;}
+.motm-lb-name{font-size:.9rem;font-weight:700;}
+.motm-lb-sub{font-size:.7rem;color:var(--dim2);}
+.motm-lb-entries{margin-top:8px;}
+.motm-lb-entry{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.72rem;color:var(--dim2);}
+.motm-lb-entry:last-child{border-bottom:none;}
+.motm-count{font-size:1.3rem;font-weight:900;color:var(--gold);text-align:center;}
+/* CARDS / BANS */
+.ycard-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;}
+.ycard-pips{display:flex;gap:2px;}
+.pip{width:11px;height:15px;border-radius:2px;background:var(--gold);border:1px solid rgba(0,0,0,.3);}
+/* ข้อ 2: Active Suspensions */
+.ban-row{background:rgba(192,57,43,.06);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.ban-info{flex:1;}
+.ban-name{font-weight:700;font-size:.88rem;}
+.ban-detail{font-size:.7rem;color:var(--dim2);margin-top:2px;}
+.badge{padding:2px 8px;border-radius:20px;font-size:.7rem;font-weight:700;}
+.by{background:var(--gold);color:#000;}
+.br{background:var(--red);color:white;}
+.badge-ban{padding:3px 10px;border-radius:10px;font-size:.72rem;font-weight:800;background:rgba(192,57,43,.18);color:var(--red2);border:1px solid rgba(192,57,43,.35);}
+.badge-warn{padding:2px 8px;border-radius:10px;font-size:.67rem;font-weight:700;background:rgba(200,168,75,.15);color:var(--gold);border:1px solid rgba(200,168,75,.3);}
+.badge-ok{padding:2px 8px;border-radius:10px;font-size:.67rem;font-weight:700;background:rgba(45,140,78,.1);color:var(--green2);border:1px solid rgba(45,140,78,.25);}
+/* ข้อ 1: Yellow card record rows (editable) */
+.ycard-rec-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;}
+.ycard-rec-row:last-child{border-bottom:none;}
+.ycard-rec-tag{padding:2px 8px;border-radius:6px;font-size:.67rem;font-weight:700;flex-shrink:0;}
+.ytag{background:rgba(200,168,75,.18);color:var(--gold);border:1px solid rgba(200,168,75,.3);}
+.rtag{background:rgba(192,57,43,.15);color:var(--red2);border:1px solid rgba(192,57,43,.3);}
+/* MATCH ROW */
+.match-row{display:grid;grid-template-columns:72px 1fr auto 1fr 90px;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;}
+.match-row:last-child{border-bottom:none;}
+.score-box{background:var(--blue);border:1px solid rgba(0,200,212,.2);border-radius:7px;padding:4px 12px;font-weight:800;text-align:center;letter-spacing:2px;}
+.match-week{color:var(--dim2);font-size:.7rem;text-align:center;line-height:1.4;}
+/* LOGO */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;padding:16px;}
+.logo-card{background:var(--card3);border-radius:12px;border:2px solid var(--border);padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:.25s;position:relative;}
+.logo-card:hover{border-color:var(--teal);}
+.logo-card.has-logo{border-color:rgba(45,140,78,.45);}
+.logo-display{width:66px;height:66px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,200,212,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--teal);background:var(--card2);position:relative;}
+.logo-display img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.logo-ov{position:absolute;inset:0;border-radius:50%;background:rgba(0,200,212,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;font-size:1.3rem;}
+.logo-card:hover .logo-ov{opacity:1;}
+.logo-tn{font-size:.78rem;font-weight:700;text-align:center;}
+.logo-tg{font-size:.64rem;color:var(--dim2);}
+.logo-st{font-size:.64rem;padding:2px 8px;border-radius:10px;}
+.lst-ok{background:rgba(45,140,78,.12);color:var(--green2);border:1px solid rgba(45,140,78,.25);}
+.lst-no{background:rgba(92,122,154,.1);color:var(--dim2);border:1px solid var(--border);}
+.logo-rm{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;background:var(--red);border:none;color:white;font-size:.65rem;cursor:pointer;display:none;align-items:center;justify-content:center;line-height:1;}
+.logo-card.has-logo:hover .logo-rm{display:flex;}
+/* BG */
+.bg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;padding:16px;}
+.bg-opt{height:80px;border-radius:10px;background-size:cover;background-position:center;cursor:pointer;border:3px solid transparent;transition:.2s;position:relative;overflow:hidden;}
+.bg-opt:hover,.bg-opt.sel{border-color:var(--teal);}
+.bg-opt-lbl{position:absolute;bottom:0;left:0;right:0;padding:4px 8px;background:rgba(0,0,0,.75);font-size:.65rem;}
+.bg-opt-none{height:80px;border-radius:10px;border:3px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;font-size:.78rem;color:var(--dim2);}
+.bg-opt-none:hover,.bg-opt-none.sel{border-color:var(--red2);color:var(--red2);}
+/* MODAL */
+.modal-ov{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
+.modal-ov.show{display:flex;}
+.modal-box{background:var(--card2);border:1px solid var(--teal);border-radius:16px;padding:28px;width:440px;max-width:94vw;max-height:90vh;overflow-y:auto;}
+.modal-title{font-size:.95rem;font-weight:800;color:var(--teal);margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:12px;}
+.motm-preview{width:100%;height:180px;border-radius:10px;object-fit:cover;object-position:top;margin-bottom:12px;border:1px solid var(--border);}
+.pwd-inp-w{position:relative;margin-bottom:10px;}
+.pwd-inp{width:100%;padding:11px 42px 11px 14px;background:rgba(0,0,0,.4);border:1px solid var(--border);color:white;border-radius:8px;font-family:'Kanit',sans-serif;font-size:.9rem;}
+.pwd-inp:focus{outline:none;border-color:var(--teal);}
+.pwd-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;background:none;border:none;color:var(--dim2);}
+.pwd-str-bar{height:4px;border-radius:2px;background:var(--border);margin-bottom:6px;transition:width .3s,background .3s;}
+.pwd-str-txt{font-size:.66rem;margin-bottom:14px;}
+/* CONFIRM */
+.confirm-ov{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.2s;backdrop-filter:blur(12px);}
+.confirm-ov.show{opacity:1;visibility:visible;}
+.confirm-box{background:var(--card2);border:1px solid var(--red);border-radius:16px;padding:28px;min-width:300px;max-width:90vw;transform:scale(.9);transition:.25s;}
+.confirm-ov.show .confirm-box{transform:scale(1);}
+.confirm-ico{width:56px;height:56px;border-radius:50%;background:rgba(192,57,43,.12);border:2px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;}
+.confirm-title{text-align:center;font-size:1.05rem;font-weight:800;margin-bottom:8px;}
+.confirm-msg{text-align:center;font-size:.83rem;color:var(--dim2);margin-bottom:22px;line-height:1.7;}
+.confirm-item{color:var(--gold);font-weight:700;background:rgba(200,168,75,.1);padding:3px 12px;border-radius:6px;display:inline-block;margin-top:4px;}
+.confirm-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.confirm-cancel-btn{padding:10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--dim2);cursor:pointer;font-family:'Kanit',sans-serif;font-size:.9rem;font-weight:600;}
+.confirm-cancel-btn:hover{border-color:var(--teal);color:var(--teal);}
+.confirm-ok-btn{padding:10px;border-radius:8px;border:none;background:var(--red);color:white;cursor:pointer;font-family:'Kanit',sans-serif;font-size:.9rem;font-weight:700;}
+/* ADMIN PROMPT */
+.admin-prompt{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 16px;background:rgba(0,200,212,.06);border:1px solid rgba(0,200,212,.18);border-radius:10px;margin-bottom:16px;font-size:.82rem;color:var(--dim2);}
+.btn-login-inline{padding:7px 16px;border-radius:7px;border:1px solid rgba(0,200,212,.3);background:rgba(0,200,212,.08);color:var(--teal);cursor:pointer;font-family:'Kanit',sans-serif;font-size:.8rem;font-weight:700;}
+.edit-hint{display:none;margin-top:8px;padding:10px 14px;background:rgba(0,200,212,.08);border-radius:8px;font-size:.75rem;color:var(--teal);border:1px solid rgba(0,200,212,.2);}
+/* BACKUP */
+.btn-export-json{background:linear-gradient(135deg,var(--green),#00c853);color:#000;font-weight:800;border:none;padding:11px 22px;border-radius:10px;cursor:pointer;font-family:'Kanit',sans-serif;font-size:.9rem;transition:.3s;display:inline-flex;align-items:center;gap:8px;}
+.btn-import-json{background:linear-gradient(135deg,var(--blue),var(--teal));color:#000;font-weight:800;border:none;padding:11px 22px;border-radius:10px;cursor:pointer;font-family:'Kanit',sans-serif;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;}
+.import-preview-box{background:rgba(0,0,0,.4);border:1px solid rgba(0,200,212,.2);border-radius:10px;padding:14px;font-size:.75rem;font-family:monospace;color:var(--teal);max-height:180px;overflow-y:auto;white-space:pre-wrap;word-break:break-all;}
+.last-backup-info{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--card3);border-radius:8px;border:1px solid var(--border);margin-top:10px;font-size:.76rem;color:var(--dim2);}
+.backup-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.bd-ok{background:var(--green2);}
+.bd-warn{background:var(--gold);animation:blink 1s infinite;}
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--card2);border-left:4px solid var(--green2);border-radius:10px;padding:12px 20px;font-size:.84rem;z-index:99998;transform:translateX(150%);transition:.35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 30px rgba(0,0,0,.5);max-width:300px;backdrop-filter:blur(10px);}
+.toast.show{transform:translateX(0);}
+/* SUSP EDIT MODAL */
+#suspEditModal .modal-box{border-color:rgba(200,168,75,.4);}
+/* RESPONSIVE */
+@media(max-width:1200px){.standings-main-layout{grid-template-columns:1fr;}.motm-panel{position:static;}}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr;}.match-row{grid-template-columns:55px 1fr auto 1fr;}.match-week{display:none;}.page{padding:14px 16px;}.hdr{padding:12px 16px;}.hdr-league-name{font-size:1rem;}.league-main-title{font-size:1.1rem;}}
+</style>
+
+<!-- LOGIN -->
+<div id="loginOverlay">
+  <div class="login-wrap">
+    <div class="login-logo-block">
+      <div id="loginLogoDisplay" style="width:88px;height:88px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:3rem;filter:drop-shadow(0 0 16px rgba(0,200,212,.5));">⚽</div>
+      <div class="login-league-badge" id="loginTitle">SCGC Football League 2026</div>
+      <div style="font-size:.72rem;color:var(--gold);margin-top:4px;font-style:italic;">"มิตรภาพ เหนือชัยชนะ"</div>
+    </div>
+    <div class="login-box">
+      <div style="font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px;">ADMIN ACCESS</div>
+      <div style="font-size:.78rem;color:var(--dim2);text-align:center;margin-bottom:24px;">กรุณาใส่รหัสผ่านเพื่อจัดการข้อมูล</div>
+      <input class="login-inp" type="password" id="passInput" placeholder="••••••" maxlength="32">
+      <div class="login-err" id="loginErr"></div>
+      <button class="login-btn-main" id="loginBtn">🔐 AUTHENTICATE</button>
+      <button class="login-btn-view" id="viewBtn">👁️ ดูข้อมูลอย่างเดียว</button>
+      <div class="login-hint">รหัสเริ่มต้น: <strong style="color:var(--teal);">123456</strong> | เปลี่ยนได้หลัง Login</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PWD MODAL -->
+<div class="modal-ov" id="pwdModal">
+  <div class="modal-box">
+    <div class="modal-title">🔑 เปลี่ยนรหัสผ่าน Admin</div>
+    <div class="pwd-inp-w"><input class="pwd-inp" type="password" id="pwd_old" placeholder="รหัสผ่านเดิม"><button class="pwd-eye" data-target="pwd_old">👁️</button></div>
+    <div class="pwd-inp-w"><input class="pwd-inp" type="password" id="pwd_new" placeholder="รหัสผ่านใหม่"><button class="pwd-eye" data-target="pwd_new">👁️</button></div>
+    <div class="pwd-str-bar" id="pwdBar" style="width:0;"></div>
+    <div class="pwd-str-txt" id="pwdTxt"></div>
+    <div class="pwd-inp-w"><input class="pwd-inp" type="password" id="pwd_con" placeholder="ยืนยันรหัสผ่านใหม่"><button class="pwd-eye" data-target="pwd_con">👁️</button></div>
+    <div class="login-err" id="pwdErr" style="margin-bottom:12px;"></div>
+    <div style="display:flex;gap:10px;"><button class="btn btn-green" style="flex:1;" id="pwdSaveBtn">💾 บันทึก</button><button class="btn btn-ghost" id="pwdCancelBtn">ยกเลิก</button></div>
+  </div>
+</div>
+
+<!-- MOTM MODAL -->
+<div class="modal-ov" id="motmModal">
+  <div class="modal-box" style="border-color:rgba(200,168,75,.4);">
+    <div class="modal-title" style="color:var(--gold);" id="motmModalTitle">✏️ แก้ไข MOTM Slot</div>
+    <img class="motm-preview" id="mmPhoto" src="" alt="" style="display:none;">
+    <div id="mmPhotoPlaceholder" style="width:100%;height:180px;border-radius:10px;border:2px dashed rgba(200,168,75,.2);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:12px;background:var(--card3);">📷</div>
+    <div class="form-row">
+      <div><label>ชื่อผู้เล่น</label><input class="inp" id="mm_name" placeholder="#7 วิชัย"></div>
+      <div><label>ทีม MOTM</label><select class="sel" id="mm_team"></select></div>
+    </div>
+    <div class="form-row">
+      <div><label>Home</label><select class="sel" id="mm_home"></select></div>
+      <div><label>Away</label><select class="sel" id="mm_away"></select></div>
+    </div>
+    <label>📸 รูปผู้เล่น</label>
+    <div style="display:flex;gap:8px;margin:6px 0 12px;">
+      <button class="btn btn-yellow btn-sm" style="flex:1;" id="mmPhotoFileBtn">📁 ไฟล์</button>
+      <input class="inp" id="mm_photo_url" placeholder="URL รูปภาพ" style="flex:2;font-size:.74rem;">
+    </div>
+    <label>🌄 Background Card</label>
+    <div style="display:flex;gap:8px;margin:6px 0 14px;">
+      <button class="btn btn-blue btn-sm" style="flex:1;" id="mmBgFileBtn">📁 ไฟล์</button>
+      <input class="inp" id="mm_bg_url" placeholder="URL Background" style="flex:2;font-size:.74rem;">
+    </div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-gold" style="flex:1;" id="mm_save_btn">💾 บันทึก</button><button class="btn btn-ghost" id="mmCancelBtn">ยกเลิก</button></div>
+  </div>
+</div>
+
+<!-- ข้อ 1: SUSPENSION EDIT MODAL -->
+<div class="modal-ov" id="suspEditModal">
+  <div class="modal-box" style="border-color:rgba(200,168,75,.4);">
+    <div class="modal-title" style="color:var(--gold);">✏️ แก้ไขรายการใบเหลือง/ใบแดง</div>
+    <input type="hidden" id="se_id">
+    <div class="form-row">
+      <div><label>ชื่อ/เบอร์</label><input class="inp" id="se_name" placeholder="#5 ชาตรี"></div>
+      <div><label>ทีม</label><select class="sel" id="se_team"></select></div>
+    </div>
+    <div class="form-row">
+      <div><label>ประเภท</label><select class="sel" id="se_card"><option value="yellow">🟨 ใบเหลือง (สะสม)</option><option value="red">🟥 ใบแดงตรง</option></select></div>
+      <div><label>Week</label><select class="sel" id="se_week"></select></div>
+    </div>
+    <div class="form-row">
+      <div><label>BAN เริ่มตั้งแต่</label><input class="inp" id="se_from" placeholder="WEEK 2"></div>
+      <div><label>หมายเหตุ</label><input class="inp" id="se_note" placeholder="optional"></div>
+    </div>
+    <div class="login-err" id="seErr" style="margin-bottom:10px;"></div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-gold" style="flex:1;" id="seSaveBtn">💾 บันทึกการแก้ไข</button><button class="btn btn-ghost" id="seCancelBtn">ยกเลิก</button></div>
+  </div>
+</div>
+
+<!-- CONFIRM -->
+<div class="confirm-ov" id="confirmOv">
+  <div class="confirm-box">
+    <div class="confirm-ico">🗑️</div>
+    <div class="confirm-title">ยืนยันการลบ</div>
+    <div class="confirm-msg">ลบรายการนี้ใช่หรือไม่?<br><span class="confirm-item" id="confirmItem"></span></div>
+    <div class="confirm-acts"><button class="confirm-cancel-btn" id="confirmCancel">✕ ยกเลิก</button><button class="confirm-ok-btn" id="confirmOk">🗑️ ลบ</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- HIDDEN FILES -->
+<input type="file" class="file-inp" id="league_logo_f" accept="image/*">
+<input type="file" class="file-inp" id="team_logo_f" accept="image/*">
+<input type="file" class="file-inp" id="mo_photo_f" accept="image/*">
+<input type="file" class="file-inp" id="mo_bg_f" accept="image/*">
+<input type="file" class="file-inp" id="mm_photo_f" accept="image/*">
+<input type="file" class="file-inp" id="mm_bg_f" accept="image/*">
+<input type="file" class="file-inp" id="bg_f" accept="image/*">
+<input type="file" class="file-inp" id="backup_import_f" accept=".json">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-logo-btn" id="leagueLogoBtn" title="คลิกเปลี่ยนโลโก้ (Admin)"><span id="hdrLogoIco" style="font-size:2rem;">⚽</span></div>
+    <div>
+      <div class="hdr-league-name" id="leagueTitle">SCGC Football League 2026</div>
+      <div class="hdr-sub"><span class="live-dot"></span><span>ESPORT LIVE DASHBOARD</span><span id="adminBadge" class="admin-badge" style="display:none;">ADMIN</span></div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div id="clock" style="font-size:1rem;color:var(--teal);font-weight:800;"></div>
+    <button id="changePwdBtn" class="btn btn-sm btn-gold" style="display:none;">🔑</button>
+    <button id="masterResetBtn" class="btn-master-reset" style="display:none;">⚡ RESET</button>
+    <button id="logoutBtn" class="btn btn-sm btn-red" style="display:none;">🚪</button>
+    <button id="loginAgainBtn" class="btn btn-sm btn-blue">🔐 Login</button>
+  </div>
+</div>
+<div class="mode-bar view" id="modeBar"><div class="mode-indicator"></div><span id="modeTxt">กำลังโหลด...</span></div>
+<div class="nav">
+  <button class="nav-btn active" data-page="standings">🏆 STANDINGS</button>
+  <button class="nav-btn" data-page="scorers">⚽ SCORERS</button>
+  <button class="nav-btn" data-page="motm-mgr">⭐ MOTM</button>
+  <button class="nav-btn" data-page="suspensions">🚫 SUSPENSIONS</button>
+  <button class="nav-btn" data-page="results">📋 RESULTS</button>
+  <button class="nav-btn" data-page="recorder">✏️ RECORD</button>
+  <button class="nav-btn" data-page="backup">💾 BACKUP</button>
+  <button class="nav-btn admin-tab" data-page="logo-mgr" style="display:none;">🖼️ LOGOS</button>
+  <button class="nav-btn admin-tab" data-page="team-mgr" style="display:none;">⚙️ TEAMS</button>
+  <button class="nav-btn admin-tab" data-page="bgpicker" style="display:none;">🎨 BG</button>
+</div>
+
+<!-- PAGE: STANDINGS -->
+<div class="page active" id="page-standings">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 18px;margin-bottom:18px;background:var(--card);border-radius:12px;border:1px solid var(--border);">
+    <div><div style="font-size:.9rem;font-weight:700;color:var(--teal);">📸 Export ตารางคะแนน + MOTM</div><div style="font-size:.7rem;color:var(--dim2);margin-top:2px;">ดาวน์โหลดรูปภาพสำหรับประชาสัมพันธ์</div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn-dl" id="dl-both">📸 ทั้ง 2 กลุ่ม</button>
+      <button class="btn-dl grp-a" id="dl-a">⬇ GROUP A</button>
+      <button class="btn-dl grp-b" id="dl-b">⬇ GROUP B</button>
+    </div>
+  </div>
+  <!-- GROUP A -->
+  <div class="standings-main-layout">
+    <div class="panel">
+      <div class="standings-league-header">
+        <div class="league-logo-display" id="leagueLogoA"><span style="font-size:2.5rem;">⚽</span></div>
+        <div class="league-title-block">
+          <div class="league-main-title" id="leagueTitleA">SCGC FOOTBALL LEAGUE</div>
+          <div class="league-sub-title">GROUP A — OFFICIAL STANDINGS</div>
+          <div class="league-motto">❝ มิตรภาพ เหนือชัยชนะ ❞</div>
+        </div>
+        <div class="league-season-badge"><div class="league-season-yr">2026</div><div class="league-season-lbl">SEASON</div></div>
+      </div>
+      <div style="overflow-x:auto;"><table class="standings-table"><thead><tr><th style="width:32px;">#</th><th class="th-left">TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th style="color:var(--green2);">GF</th><th style="color:var(--red2);">GA</th><th>GD</th><th style="color:var(--teal);">PTS</th></tr></thead><tbody id="tA"></tbody></table></div>
+      <div class="legend-row"><span>🥇 อันดับ 1</span><span>🥈 อันดับ 2</span><span>🥉 อันดับ 3</span><span style="margin-left:auto;">เรียง: PTS → GD → GF</span></div>
+    </div>
+    <div class="motm-panel">
+      <div class="motm-panel-hdr"><span class="motm-panel-title">⭐ MOTM — GROUP A</span><span id="motmBadgeA" style="font-size:.6rem;padding:2px 7px;border-radius:10px;background:rgba(200,168,75,.1);color:var(--gold);border:1px solid rgba(200,168,75,.18);margin-right:5px;">ทั้งหมด</span><div style="display:flex;gap:4px;"><button class="motm-tb" id="mtcA" data-grp="A" data-mode="collapsed">−</button><button class="motm-tb on" id="mteA" data-grp="A" data-mode="expanded">+</button></div></div>
+      <div class="motm-body expanded" id="mbA"></div>
+      <div class="motm-more-hint" id="motmHintA" data-grp="A">▼ กด + ดูทุก Week</div>
+    </div>
+  </div>
+  <!-- GROUP B -->
+  <div class="standings-main-layout">
+    <div class="panel">
+      <div class="standings-league-header">
+        <div class="league-logo-display" id="leagueLogoB"><span style="font-size:2.5rem;">⚽</span></div>
+        <div class="league-title-block">
+          <div class="league-main-title" id="leagueTitleB">SCGC FOOTBALL LEAGUE</div>
+          <div class="league-sub-title">GROUP B — OFFICIAL STANDINGS</div>
+          <div class="league-motto">❝ มิตรภาพ เหนือชัยชนะ ❞</div>
+        </div>
+        <div class="league-season-badge"><div class="league-season-yr">2026</div><div class="league-season-lbl">SEASON</div></div>
+      </div>
+      <div style="overflow-x:auto;"><table class="standings-table"><thead><tr><th style="width:32px;">#</th><th class="th-left">TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th style="color:var(--green2);">GF</th><th style="color:var(--red2);">GA</th><th>GD</th><th style="color:var(--teal);">PTS</th></tr></thead><tbody id="tB"></tbody></table></div>
+      <div class="legend-row"><span>🥇 อันดับ 1</span><span>🥈 อันดับ 2</span><span>🥉 อันดับ 3</span><span style="margin-left:auto;">เรียง: PTS → GD → GF</span></div>
+    </div>
+    <div class="motm-panel">
+      <div class="motm-panel-hdr"><span class="motm-panel-title">⭐ MOTM — GROUP B</span><span id="motmBadgeB" style="font-size:.6rem;padding:2px 7px;border-radius:10px;background:rgba(200,168,75,.1);color:var(--gold);border:1px solid rgba(200,168,75,.18);margin-right:5px;">ทั้งหมด</span><div style="display:flex;gap:4px;"><button class="motm-tb" id="mtcB" data-grp="B" data-mode="collapsed">−</button><button class="motm-tb on" id="mteB" data-grp="B" data-mode="expanded">+</button></div></div>
+      <div class="motm-body expanded" id="mbB"></div>
+      <div class="motm-more-hint" id="motmHintB" data-grp="B">▼ กด + ดูทุก Week</div>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="top3-card"><div class="top3-hdr" style="color:var(--green2);">⚽ TOP 3 SCORERS</div><div id="top3Scorers" style="padding:4px 0;"></div></div>
+    <div class="top3-card"><div class="top3-hdr" style="color:var(--gold);">⭐ TOP 3 MOST MOTM</div><div id="top3Motm" style="padding:4px 0;"></div></div>
+    <div class="top3-card"><div class="top3-hdr" style="color:var(--red2);">🚫 ACTIVE BANS</div><div id="topBans" style="padding:4px 0;"></div></div>
+  </div>
+</div>
+
+<!-- PAGE: SCORERS -->
+<div class="page" id="page-scorers">
+  <div id="scorersPrompt" class="admin-prompt" style="display:none;"><span>🔒 <strong>ต้องการสิทธิ์ Admin</strong></span><button class="btn-login-inline" id="scorersLoginBtn">🔐 Login</button></div>
+  <div class="upd-bar" id="ub-scorers"><div style="display:flex;align-items:center;gap:10px;"><div class="upd-dot"></div><div><div class="upd-title" id="ubt-scorers">ข้อมูลเป็นปัจจุบัน</div><div class="upd-sub">หลังแก้ไข กด UPDATE</div></div></div><button class="btn-upd" id="btn-upd-scorers">🔄 UPDATE</button></div>
+  <div class="grid2">
+    <div class="panel" style="border:1px solid rgba(45,140,78,.25);" id="sc-form-panel">
+      <div class="panel-hdr"><span class="panel-title" style="color:var(--green2);">➕ เพิ่ม/แก้ไข ดาวซัลโว</span></div>
+      <div class="panel-body">
+        <input type="hidden" id="sc_edit_id">
+        <div class="form-row"><div><label>ชื่อ/เบอร์</label><input class="inp" id="sc_name" placeholder="#10 สมชาย"></div><div><label>ทีม</label><select class="sel" id="sc_team"></select></div></div>
+        <div class="form-row"><div><label>ประตู</label><input class="inp" id="sc_goals" type="number" min="1" value="1"></div><div><label>Week</label><select class="sel" id="sc_week"></select></div></div>
+        <div style="display:flex;gap:8px;"><button class="btn btn-green" style="flex:1;" id="sc_submit">💾 บันทึก</button><button class="btn btn-ghost" id="sc_clear">🔄 ล้าง</button></div>
+        <div class="edit-hint" id="sc_hint">✏️ โหมดแก้ไข — กด บันทึก เพื่ออัปเดต</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-title">⚽ SCORERS</span><span id="sc_cnt" style="font-size:.7rem;color:var(--dim2);"></span></div>
+      <div class="panel-body" id="sc_list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: MOTM MGR -->
+<div class="page" id="page-motm-mgr">
+  <div id="motmPrompt" class="admin-prompt" style="display:none;"><span>🔒 <strong>ต้องการสิทธิ์ Admin</strong></span><button class="btn-login-inline" id="motmLoginBtn">🔐 Login</button></div>
+  <div class="upd-bar" id="ub-motm"><div style="display:flex;align-items:center;gap:10px;"><div class="upd-dot"></div><div><div class="upd-title" id="ubt-motm">ข้อมูลเป็นปัจจุบัน</div><div class="upd-sub">จัดการ Man of the Match</div></div></div><button class="btn-upd" id="btn-upd-motm">🔄 UPDATE</button></div>
+  <div class="grid2">
+    <div class="panel" style="border:1px solid rgba(200,168,75,.22);" id="mo-form-panel">
+      <div class="panel-hdr"><span class="panel-title" id="moFormTitle" style="color:var(--gold);">⭐ เพิ่ม Man of the Match</span><button class="btn btn-xs btn-blue" id="moCancelEdit" style="display:none;">✕ ยกเลิก</button></div>
+      <div class="panel-body">
+        <input type="hidden" id="mo_edit_id">
+        <div class="form-row"><div><label>Week</label><select class="sel" id="mo_wk"></select></div><div><label>Group</label><select class="sel" id="mo_grp"><option value="A">Group A</option><option value="B">Group B</option></select></div><div><label>คู่ที่</label><select class="sel" id="mo_slot"><option value="0">คู่ที่ 1</option><option value="1">คู่ที่ 2</option><option value="2">คู่ที่ 3</option></select></div></div>
+        <div class="form-row"><div><label>Home</label><select class="sel" id="mo_home"></select></div><div><label>Away</label><select class="sel" id="mo_away"></select></div></div>
+        <div class="form-row"><div><label>ชื่อผู้เล่น MOTM</label><input class="inp" id="mo_name" placeholder="#7 วิชัย"></div><div><label>ทีม MOTM</label><select class="sel" id="mo_team"></select></div></div>
+        <label style="margin-bottom:6px;display:block;">📸 รูปผู้เล่น</label>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;margin-bottom:12px;">
+          <div id="mo_photo_prev" style="width:80px;height:100px;border-radius:10px;border:2px dashed rgba(200,168,75,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;background:var(--card3);"><span style="font-size:1.6rem;">📷</span><span style="font-size:.55rem;color:var(--dim2);margin-top:4px;">คลิกเลือก</span></div>
+          <div><button class="btn btn-yellow btn-sm" style="width:100%;margin-bottom:6px;" id="moPhotoBtn">📁 เลือกไฟล์</button><input class="inp" id="mo_photo_url" placeholder="URL รูปผู้เล่น" style="font-size:.74rem;"></div>
+        </div>
+        <label style="margin-bottom:6px;display:block;">🌄 Background Card</label>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;margin-bottom:14px;">
+          <div id="mo_bg_prev" style="width:80px;height:50px;border-radius:8px;border:2px dashed rgba(0,200,212,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;overflow:hidden;background:var(--card3);background-size:cover;">🌄</div>
+          <div><button class="btn btn-blue btn-sm" style="width:100%;margin-bottom:6px;" id="moBgBtn">📁 Background</button><input class="inp" id="mo_bg_url" placeholder="URL Background" style="font-size:.74rem;"></div>
+        </div>
+        <div style="display:flex;gap:8px;"><button class="btn btn-gold" style="flex:1;" id="mo_submit">💾 บันทึก MOTM</button><button class="btn btn-ghost" id="mo_clear">🔄 ล้าง</button></div>
+        <div class="edit-hint" id="mo_hint">✏️ โหมดแก้ไข</div>
+      </div>
+    </div>
+    <div class="panel"><div class="panel-hdr"><span class="panel-title" style="color:var(--gold);">⭐ MOTM LEADERBOARD</span><span id="mo_cnt" style="font-size:.7rem;color:var(--dim2);"></span></div><div class="panel-body" id="mo_list"></div></div>
+  </div>
+</div>
+
+<!-- PAGE: SUSPENSIONS -->
+<div class="page" id="page-suspensions">
+  <div id="suspPrompt" class="admin-prompt" style="display:none;"><span>🔒 <strong>ต้องการสิทธิ์ Admin</strong></span><button class="btn-login-inline" id="suspLoginBtn">🔐 Login</button></div>
+  <div class="upd-bar" id="ub-susp"><div style="display:flex;align-items:center;gap:10px;"><div class="upd-dot"></div><div><div class="upd-title" id="ubt-susp">ข้อมูลเป็นปัจจุบัน</div><div class="upd-sub">หลังแก้ไข กด UPDATE</div></div></div><button class="btn-upd" id="btn-upd-susp">🔄 UPDATE</button></div>
+  <div class="panel" style="border:1px solid rgba(200,168,75,.18);margin-bottom:16px;">
+    <div class="panel-hdr" style="background:rgba(200,168,75,.04);"><span class="panel-title" style="color:var(--gold);">📋 เกณฑ์การลงโทษ</span></div>
+    <div class="panel-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="text-align:center;padding:12px;background:rgba(200,168,75,.04);border-radius:10px;border:1px solid rgba(200,168,75,.12);"><div style="font-size:1.8rem;">🟨</div><div style="font-size:.8rem;font-weight:700;color:var(--gold);margin-top:6px;">1 ใบเหลือง</div><div style="font-size:.68rem;color:var(--dim2);margin-top:3px;">สะสม — เล่นปกติ</div></div>
+      <div style="text-align:center;padding:12px;background:rgba(192,57,43,.05);border-radius:10px;border:1px solid rgba(192,57,43,.12);"><div style="font-size:1.3rem;">🟨🟨</div><div style="font-size:.8rem;font-weight:700;color:var(--red2);margin-top:6px;">2 ใบเหลืองสะสม</div><div style="font-size:.68rem;color:var(--dim2);margin-top:3px;">BAN 1 นัดถัดไป</div></div>
+      <div style="text-align:center;padding:12px;background:rgba(192,57,43,.08);border-radius:10px;border:1px solid rgba(192,57,43,.2);"><div style="font-size:1.8rem;">🟥</div><div style="font-size:.8rem;font-weight:700;color:var(--red2);margin-top:6px;">ใบแดงตรง</div><div style="font-size:.68rem;color:var(--dim2);margin-top:3px;">BAN 2 นัดทันที</div></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="panel" style="border:1px solid rgba(192,57,43,.22);" id="su-form-panel">
+      <div class="panel-hdr"><span class="panel-title" style="color:var(--red2);">➕ บันทึกใบเหลือง/ใบแดง</span></div>
+      <div class="panel-body">
+        <div class="form-row"><div><label>ชื่อ/เบอร์</label><input class="inp" id="su_name" placeholder="#5 ชาตรี"></div><div><label>ทีม</label><select class="sel" id="su_team"></select></div></div>
+        <div class="form-row"><div><label>ประเภท</label><select class="sel" id="su_card"><option value="yellow">🟨 ใบเหลือง (สะสม)</option><option value="red">🟥 ใบแดงตรง</option></select></div><div><label>Week</label><select class="sel" id="su_week"></select></div></div>
+        <div class="form-row"><div><label>BAN เริ่มตั้งแต่</label><input class="inp" id="su_from" placeholder="WEEK 2"></div><div><label>หมายเหตุ</label><input class="inp" id="su_note" placeholder="optional"></div></div>
+        <div style="display:flex;gap:8px;"><button class="btn btn-red" style="flex:1;" id="su_submit">💾 บันทึก</button><button class="btn btn-ghost" id="su_clear">🔄 ล้าง</button></div>
+      </div>
+    </div>
+    <div>
+      <!-- ข้อ 1: Records (editable) -->
+      <div class="panel" style="margin-bottom:16px;border:1px solid rgba(200,168,75,.15);">
+        <div class="panel-hdr"><span class="panel-title" style="color:var(--gold);">📋 รายการใบเหลือง/ใบแดงทั้งหมด</span><span id="card_rec_cnt" style="font-size:.7rem;color:var(--dim2);"></span></div>
+        <div class="panel-body" id="card_records"></div>
+      </div>
+      <!-- ข้อ 2: Yellow accumulation -->
+      <div class="panel" style="margin-bottom:16px;">
+        <div class="panel-hdr"><span class="panel-title" style="color:var(--gold);">🟨 ใบเหลืองสะสม (ทุกคน)</span></div>
+        <div class="panel-body" id="y_accum"></div>
+      </div>
+      <!-- ข้อ 2: Active Suspensions — คนที่ BAN จริงๆ -->
+      <div class="panel">
+        <div class="panel-hdr"><span class="panel-title" style="color:var(--red2);">🚫 ACTIVE SUSPENSIONS</span><span id="ban_cnt" style="font-size:.7rem;color:var(--dim2);"></span></div>
+        <div class="panel-body" id="ban_list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: RESULTS -->
+<div class="page" id="page-results">
+  <div class="upd-bar" id="ub-results"><div style="display:flex;align-items:center;gap:10px;"><div class="upd-dot"></div><div><div class="upd-title" id="ubt-results">ข้อมูลเป็นปัจจุบัน</div><div class="upd-sub">หลังลบ กด UPDATE</div></div></div><button class="btn-upd" id="btn-upd-results">🔄 UPDATE</button></div>
+  <div class="panel"><div class="panel-hdr"><span class="panel-title">📋 ALL MATCH RESULTS</span><span id="match_cnt" style="font-size:.7rem;color:var(--dim2);"></span></div><div class="panel-body" id="match_log"></div></div>
+</div>
+
+<!-- PAGE: RECORDER -->
+<div class="page" id="page-recorder">
+  <div id="recPrompt" class="admin-prompt" style="display:none;"><span>🔒 <strong>ต้องการสิทธิ์ Admin</strong></span><button class="btn-login-inline" id="recLoginBtn">🔐 Login</button></div>
+  <div class="grid2">
+    <div class="panel" style="border:1px solid rgba(0,200,212,.2);" id="rec-form-panel">
+      <div class="panel-hdr"><span class="panel-title">✏️ RECORD MATCH</span></div>
+      <div class="panel-body">
+        <div class="form-row"><div><label>Week</label><select class="sel" id="r_wk"></select></div><div><label>Group</label><select class="sel" id="r_grp"><option value="A">Group A</option><option value="B">Group B</option></select></div></div>
+        <div style="display:grid;grid-template-columns:1fr 55px 24px 55px 1fr;gap:6px;align-items:end;margin-bottom:12px;">
+          <div><label>Home</label><select class="sel" id="r_t1"></select></div>
+          <div><label style="color:var(--green2);">GF</label><input class="inp" id="r_s1" type="number" min="0" value="0" style="text-align:center;font-weight:800;color:var(--green2);font-size:1.1rem;padding:6px 2px;"></div>
+          <div style="text-align:center;padding-bottom:8px;color:var(--dim2);font-weight:900;">–</div>
+          <div><label style="color:var(--red2);">GA</label><input class="inp" id="r_s2" type="number" min="0" value="0" style="text-align:center;font-weight:800;color:var(--red2);font-size:1.1rem;padding:6px 2px;"></div>
+          <div><label>Away</label><select class="sel" id="r_t2"></select></div>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--border);margin:12px 0;">
+        <div class="form-row"><div><label>Scorer</label><input class="inp" id="r_scorer" placeholder="#10 สมชาย"></div><div><label>ประตู</label><input class="inp" id="r_goals" type="number" value="1" min="1"></div></div>
+        <div><label>⭐ Man of the Match</label><input class="inp" id="r_motm" placeholder="#7 วิชัย" style="margin-top:5px;"></div>
+        <button class="btn btn-teal" style="width:100%;padding:13px;margin-top:14px;" id="rec_submit">✅ บันทึกผลการแข่งขัน</button>
+      </div>
+    </div>
+    <div class="panel"><div class="panel-hdr"><span class="panel-title">📊 5 แมตช์ล่าสุด</span></div><div class="panel-body" id="r_recent"></div></div>
+  </div>
+</div>
+
+<!-- PAGE: BACKUP -->
+<div class="page" id="page-backup">
+  <div class="panel" style="border:1px solid rgba(45,140,78,.25);">
+    <div class="panel-hdr" style="background:linear-gradient(135deg,rgba(45,140,78,.08),rgba(0,200,212,.04));"><span class="panel-title" style="color:var(--green2);">💾 BACKUP & RESTORE</span></div>
+    <div class="panel-body">
+      <div style="background:var(--card3);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:18px;"><div style="font-size:.8rem;color:var(--dim2);line-height:1.8;">⚠️ ข้อมูลเก็บใน <strong style="color:var(--gold);">Browser LocalStorage</strong> — หายถ้าล้าง Cache<br>✅ Export ไฟล์เก็บใน <strong style="color:var(--teal);">Google Drive / iCloud</strong> เป็นประจำ</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:18px;" id="fullDataSummary"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+        <button class="btn-export-json" id="exportFullBtn" style="flex:1;">📦 Export ทั้งหมด (.json)</button>
+        <button class="btn-export-json" id="exportStatsBtn" style="flex:1;background:linear-gradient(135deg,#00897b,#00d4c8);">📊 Export เฉพาะสถิติ</button>
+      </div>
+      <hr style="border:0;border-top:1px solid var(--border);margin:16px 0;">
+      <div style="font-size:.88rem;font-weight:800;color:var(--teal);margin-bottom:12px;">📥 Import — กู้คืนข้อมูล</div>
+      <div id="bkDropZone" style="border:2px dashed rgba(0,200,212,.2);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:.3s;background:rgba(0,200,212,.02);">
+        <div style="font-size:2.5rem;margin-bottom:8px;">📂</div>
+        <div style="font-size:.88rem;font-weight:700;color:var(--teal);">คลิก หรือ ลากไฟล์มาวาง</div>
+        <div style="font-size:.72rem;color:var(--dim2);margin-top:4px;">รองรับเฉพาะไฟล์ .json</div>
+      </div>
+      <button class="btn-import-json" style="width:100%;margin-top:12px;" id="importPickBtn">📂 เลือกไฟล์ Backup</button>
+      <div id="importPreviewSection" style="display:none;margin-top:14px;">
+        <div style="font-size:.82rem;font-weight:700;color:var(--green2);margin-bottom:8px;">✅ พบไฟล์ Backup — ตรวจสอบก่อนกู้คืน:</div>
+        <div class="import-preview-box" id="importPreviewTxt"></div>
+        <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn-import-json" style="flex:1;" id="confirmImportBtn">⚡ กู้คืนทันที</button><button class="btn btn-ghost" id="cancelImportBtn">✕ ยกเลิก</button></div>
+      </div>
+      <div class="last-backup-info" style="margin-top:14px;"><div class="backup-dot bd-warn" id="backupDot"></div><span id="lastBackupTxt">ยังไม่มี Backup</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: LOGO MANAGER -->
+<div class="page" id="page-logo-mgr">
+  <div class="panel">
+    <div class="panel-hdr"><span class="panel-title">🖼️ LOGO MANAGER</span><div style="display:flex;align-items:center;gap:10px;"><span id="logo_cnt" style="font-size:.7rem;color:var(--dim2);"></span><button class="btn-logo-reset" id="resetLogosBtn">🗑️ Reset โลโก้ทั้งหมด</button></div></div>
+    <div style="padding:14px;background:rgba(0,200,212,.03);border-bottom:1px solid var(--border);">
+      <div class="form-row"><div style="flex:2;"><label>URL Logo</label><input class="inp" id="url_logo" placeholder="https://..."></div><div><label>ทีม</label><select class="sel" id="url_team"></select></div></div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-blue" style="flex:1;" id="url_apply">✅ Apply URL</button><button class="btn btn-red" id="url_remove">🗑️ Remove</button></div>
+    </div>
+    <div class="logo-grid" id="logoGrid"></div>
+  </div>
+</div>
+
+<!-- PAGE: TEAM MANAGER -->
+<div class="page" id="page-team-mgr">
+  <div class="grid2">
+    <div class="panel" style="border:1px solid rgba(0,200,212,.2);"><div class="panel-hdr"><span class="panel-title">⚙️ จัดการทีม</span></div><div class="panel-body"><div class="form-row"><div><label>ชื่อทีมใหม่</label><input class="inp" id="tm_name" placeholder="ชื่อทีม"></div><div><label>กลุ่ม</label><select class="sel" id="tm_grp"><option value="A">Group A</option><option value="B">Group B</option></select></div></div><button class="btn btn-green" style="width:100%;" id="tm_add">➕ เพิ่มทีม</button></div></div>
+    <div class="panel"><div class="panel-hdr"><span class="panel-title">📋 รายชื่อทีม</span></div><div class="panel-body" id="tm_list"></div></div>
+  </div>
+</div>
+
+<!-- PAGE: BG PICKER -->
+<div class="page" id="page-bgpicker">
+  <div class="panel"><div class="panel-hdr"><span class="panel-title">🎨 BACKGROUND</span></div>
+    <div style="padding:16px;border-bottom:1px solid var(--border);">
+      <label style="margin-bottom:6px;display:block;">URL Background</label>
+      <div style="display:flex;gap:8px;margin-bottom:8px;"><input class="inp" id="custom_bg" placeholder="https://...image.jpg" style="flex:1;"><button class="btn btn-blue" id="applyCustomBgBtn">✅ Apply</button></div>
+      <button class="btn btn-blue" style="width:100%;margin-bottom:8px;" id="bgFileBtn">📁 อัปโหลดรูป Background</button>
+      <button class="btn btn-ghost" style="width:100%;" id="clearBgBtn">🗑️ ล้าง Background (ใช้พื้นหลังเดิม)</button>
+    </div>
+    <div class="bg-grid" id="bgGrid"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════
+const WEEKS = ['WEEK 1','WEEK 2','WEEK 3','WEEK 4','WEEK 5','WEEK 6','WEEK 7'];
+const STORAGE_KEY = 'scgc_v32';
+const BG_PRESETS = [
+  {url:'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80',label:'Stadium Night'},
+  {url:'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600&q=80',label:'Football Pitch'},
+  {url:'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600&q=80',label:'Trophy'},
+  {url:'https://images.unsplash.com/photo-1551958219-acbc31b81b78?w=1600&q=80',label:'Dark Arena'}
+];
+const TEAM_COLORS = {
+  GSC:'#1a5c1a',REPCONEX:'#1a3a5c',TPE:'#5c1a1a',NPI:'#2a2a4a',
+  'MTT&RTC':'#5c3a1a',ROC:'#4a3a00',DSAM:'#003a5c',SCGC:'#1a3a5c',
+  TMMA:'#3a1a00',MFC:'#5c0000',RMT:'#001a5c',MOC:'#003a1a',TPC:'#1a1a1a'
+};
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let _uid = 1000;
+const uid = () => ++_uid;
+let isAdmin = false;
+let pendingTeamLogo = null;
+let pendingImportData = null;
+let curMOPhoto = null, curMOBg = null;
+let motmEditPhoto = null, motmEditBg = null, motmEditCtx = null;
+const motmViewState = {A:'expanded', B:'expanded'};
+let _confirmCb = null;
+
+let S = {
+  adminPassword:'123456', leagueName:'SCGC Football League 2026',
+  background:'',
+  teamsA:['GSC','REPCONEX','TPE','NPI','MTT&RTC','ROC','DSAM'],
+  teamsB:['SCGC','TMMA','MFC','RMT','MOC','TPC'],
+  teamStats:{}, logos:{}, leagueLogo:null,
+  scorers:[], motm:[], motmPhotos:{A:{},B:{}},
+  cards:[], matches:[], lastBackupDate:null
+};
+
+// ══════════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════════
+const g = id => document.getElementById(id);
+const allTeams = () => [...S.teamsA, ...S.teamsB];
+
+function initStat(name) {
+  if (!S.teamStats[name])
+    S.teamStats[name] = {name,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0};
+}
+
+function readFile(file) {
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+let _tt;
+function toast(msg, color='#38b263') {
+  const el = g('toast');
+  el.textContent = msg;
+  el.style.borderLeftColor = color;
+  el.classList.add('show');
+  clearTimeout(_tt);
+  _tt = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function tLogo(name, sz=34) {
+  const col = TEAM_COLORS[name] || '#0d1f3c';
+  const abbr = name.slice(0,3).toUpperCase();
+  if (S.logos && S.logos[name])
+    return `<div class="t-logo" style="width:${sz}px;height:${sz}px;"><img src="${S.logos[name]}" alt="${abbr}"></div>`;
+  return `<div class="t-logo" style="width:${sz}px;height:${sz}px;background:linear-gradient(135deg,${col},${col}cc);font-size:${Math.floor(sz*.27)}px;">${abbr}</div>`;
+}
+
+// ══════════════════════════════════════════════
+// ข้อ 3: APPLY BG — แก้ไขให้ทำงานจริง
+// ══════════════════════════════════════════════
+function applyBg() {
+  if (S.background && S.background.length > 0) {
+    document.body.style.setProperty('background-image', `url('${S.background}')`, 'important');
+    document.body.style.setProperty('background-size', 'cover', 'important');
+    document.body.style.setProperty('background-position', 'center', 'important');
+    document.body.style.setProperty('background-attachment', 'fixed', 'important');
+    document.body.style.setProperty('background-repeat', 'no-repeat', 'important');
+    document.body.classList.add('has-bg');
+  } else {
+    document.body.style.removeProperty('background-image');
+    document.body.style.removeProperty('background-size');
+    document.body.style.removeProperty('background-position');
+    document.body.style.removeProperty('background-attachment');
+    document.body.style.removeProperty('background-repeat');
+    document.body.classList.remove('has-bg');
+  }
+}
+
+function applyLeagueLogo() {
+  const src = S.leagueLogo;
+  ['leagueLogoBtn','leagueLogoA','leagueLogoB'].forEach(id => {
+    const el = g(id); if (!el) return;
+    el.innerHTML = src
+      ? `<img src="${src}" style="width:100%;height:100%;object-fit:contain;" alt="">`
+      : (id === 'leagueLogoBtn' ? '<span style="font-size:2rem;">⚽</span>' : '<span style="font-size:2.5rem;">⚽</span>');
+  });
+  const ll = g('loginLogoDisplay');
+  if (ll) ll.innerHTML = src ? `<img src="${src}" style="width:100%;height:100%;object-fit:contain;" alt="">` : '⚽';
+}
+
+// ══════════════════════════════════════════════
+// SAVE / LOAD
+// ══════════════════════════════════════════════
+function saveData() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(S)); updateBackupStatus(); }
+  catch(e) { toast('⚠️ Storage เต็ม — Export ข้อมูลก่อน','#ff7043'); }
+}
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) Object.assign(S, JSON.parse(raw));
+  } catch(e) {}
+  if (!S.motmPhotos) S.motmPhotos = {A:{},B:{}};
+  ['A','B'].forEach(grp => {
+    if (!S.motmPhotos[grp]) S.motmPhotos[grp] = {};
+    WEEKS.forEach((_,wi) => { if (!Array.isArray(S.motmPhotos[grp][wi])) S.motmPhotos[grp][wi]=[null,null,null]; });
+  });
+  ['teamStats','logos','scorers','motm','cards','matches'].forEach(k => { if (!S[k]) S[k] = Array.isArray(S[k])?[]:{};});
+  if (!S.scorers) S.scorers=[];
+  if (!S.motm) S.motm=[];
+  if (!S.cards) S.cards=[];
+  if (!S.matches) S.matches=[];
+  if (!S.teamStats) S.teamStats={};
+  if (!S.logos) S.logos={};
+}
+
+// ══════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════
+function doLogin() {
+  const v = g('passInput').value, err = g('loginErr');
+  err.textContent = ''; g('passInput').style.borderColor='';
+  if (v === S.adminPassword) {
+    isAdmin = true; g('loginOverlay').style.display='none';
+    setAdminUI(true); renderAll(); toast('✅ Admin Login สำเร็จ 🎉');
+  } else {
+    g('passInput').style.borderColor='var(--red2)';
+    err.textContent='❌ รหัสผ่านไม่ถูกต้อง'; g('passInput').value='';
+    setTimeout(()=>{ g('passInput').style.borderColor=''; err.textContent=''; },3000);
+  }
+}
+function viewOnlyMode() { isAdmin=false; g('loginOverlay').style.display='none'; setAdminUI(false); renderAll(); }
+function doLogout() { if(!confirm('ออกจากระบบ Admin?'))return; isAdmin=false; setAdminUI(false); toast('🚪 ออกจากระบบ'); renderAll(); }
+function reopenLogin() { g('passInput').value=''; g('loginErr').textContent=''; g('loginOverlay').style.display='flex'; }
+
+function setAdminUI(admin) {
+  isAdmin = admin;
+  g('adminBadge').style.display = admin?'inline':'none';
+  ['changePwdBtn','masterResetBtn','logoutBtn'].forEach(id=>{ const el=g(id); if(el) el.style.display=admin?'':'none'; });
+  g('loginAgainBtn').style.display = admin?'none':'';
+  document.querySelectorAll('.admin-tab').forEach(el=>el.style.display=admin?'':'none');
+  const bar=g('modeBar'), txt=g('modeTxt');
+  if (admin) { bar.className='mode-bar admin'; txt.innerHTML='<strong style="color:var(--gold);">ADMIN MODE</strong> — สามารถแก้ไขข้อมูลได้ทุกหน้า'; }
+  else { bar.className='mode-bar view'; txt.innerHTML='👁️ <strong style="color:var(--teal);">VIEW ONLY</strong> — <span style="cursor:pointer;color:var(--teal);text-decoration:underline;" id="modeLoginLink">Login Admin</span> เพื่อแก้ไข'; const ml=g('modeLoginLink'); if(ml) ml.addEventListener('click',reopenLogin); }
+  document.body.classList.toggle('admin-mode',admin);
+  document.body.classList.toggle('view-mode',!admin);
+  ['scorersPrompt','motmPrompt','suspPrompt','recPrompt'].forEach(id=>{ const el=g(id); if(el) el.style.display=admin?'none':'flex'; });
+  ['sc-form-panel','mo-form-panel','su-form-panel','rec-form-panel'].forEach(id=>{ const el=g(id); if(!el)return; el.style.opacity=admin?'1':'.4'; el.style.pointerEvents=admin?'auto':'none'; });
+}
+
+// ══════════════════════════════════════════════
+// SORT
+// ══════════════════════════════════════════════
+function sortTeams(list) {
+  return list.map(name=>{ initStat(name); return S.teamStats[name]; })
+    .sort((a,b)=>{ if(b.pts!==a.pts)return b.pts-a.pts; const gA=a.gf-a.ga,gB=b.gf-b.ga; if(gB!==gA)return gB-gA; if(b.gf!==a.gf)return b.gf-a.gf; return a.name.localeCompare(b.name); });
+}
+
+// ══════════════════════════════════════════════
+// STANDINGS
+// ══════════════════════════════════════════════
+function renderStandings() {
+  const draw = (list, tbId) => {
+    const tb=g(tbId); if(!tb)return; tb.innerHTML='';
+    sortTeams(list).forEach((team,i)=>{
+      const gd=team.gf-team.ga, gdStr=gd>0?'+'+gd:String(gd);
+      const gdClass=gd>0?'c-gd-p':gd<0?'c-gd-n':'c-gd-z';
+      const rank=i===0?`<span class="rank-badge r1">🥇</span>`:i===1?`<span class="rank-badge r2">🥈</span>`:i===2?`<span class="rank-badge r3">🥉</span>`:`<span class="rN">${i+1}</span>`;
+      const ce=isAdmin?'contenteditable="true"':'';
+      const tr=document.createElement('tr'); if(i===0)tr.className='leader';
+      tr.innerHTML=`<td>${rank}</td><td class="th-left"><div class="t-cell">${tLogo(team.name,34)}<span class="t-name">${team.name}</span></div></td>
+        <td><span class="cell-e" ${ce} data-team="${team.name}" data-key="p" onblur="cellBlur(this)">${team.p}</span></td>
+        <td><span class="cell-e" ${ce} data-team="${team.name}" data-key="w" onblur="cellBlur(this)">${team.w}</span></td>
+        <td><span class="cell-e" ${ce} data-team="${team.name}" data-key="d" onblur="cellBlur(this)">${team.d}</span></td>
+        <td><span class="cell-e" ${ce} data-team="${team.name}" data-key="l" onblur="cellBlur(this)">${team.l}</span></td>
+        <td class="c-gf"><span class="cell-e" ${ce} data-team="${team.name}" data-key="gf" onblur="cellBlur(this)">${team.gf}</span></td>
+        <td class="c-ga"><span class="cell-e" ${ce} data-team="${team.name}" data-key="ga" onblur="cellBlur(this)">${team.ga}</span></td>
+        <td class="${gdClass}">${gdStr}</td><td class="c-pts">${team.pts}</td>`;
+      tb.appendChild(tr);
+    });
+  };
+  draw(S.teamsA,'tA'); draw(S.teamsB,'tB');
+  const title=(S.leagueName||'SCGC Football League 2026').toUpperCase();
+  ['leagueTitleA','leagueTitleB'].forEach(id=>{ const el=g(id); if(el)el.textContent=title; });
+  const lt=g('leagueTitle'); if(lt)lt.textContent=S.leagueName||'SCGC Football League 2026';
+  const lti=g('loginTitle'); if(lti)lti.textContent=S.leagueName||'SCGC Football League 2026';
+}
+function cellBlur(el) {
+  if(!isAdmin){ el.innerText=S.teamStats[el.dataset.team]?.[el.dataset.key]??0; return; }
+  const name=el.dataset.team, key=el.dataset.key;
+  initStat(name);
+  S.teamStats[name][key]=Math.max(0,parseInt(el.innerText)||0);
+  if(['w','d','l'].includes(key)) S.teamStats[name].pts=S.teamStats[name].w*3+S.teamStats[name].d;
+  markDirty('standings'); saveData(); el.innerText=S.teamStats[name][key];
+}
+
+// ══════════════════════════════════════════════
+// MOTM PANELS
+// ══════════════════════════════════════════════
+function buildSlotHTML(grp,wi,sl) {
+  const d=S.motmPhotos[grp]&&S.motmPhotos[grp][wi]&&S.motmPhotos[grp][wi][sl];
+  const id=`ms-${grp}-${wi}-${sl}`;
+  if(d&&(d.photo||d.bg)){
+    const bgS=d.bg?`background-image:url('${d.bg}');background-size:cover;background-position:center;`:'';
+    const imgH=d.photo&&!d.bg?`<img class="motm-slot-photo" src="${d.photo}" alt="" crossorigin="anonymous">`:'';
+    const vsT=(d.home&&d.away)?`<div class="motm-slot-vs">${d.home} vs ${d.away}</div>`:'';
+    return `<div class="motm-slot has-photo" id="${id}" style="${bgS}">${imgH}<div class="motm-slot-gradient"></div><div class="motm-slot-info"><div class="motm-slot-name">${d.name||'—'}</div><div class="motm-slot-tag">⭐ MOTM</div>${vsT}</div><button class="motm-del" data-grp="${grp}" data-wi="${wi}" data-sl="${sl}">✕</button></div>`;
+  }
+  return `<div class="motm-slot" id="${id}"><div class="motm-empty-ico">⭐</div><div class="motm-empty-lbl">Match ${sl+1}</div></div>`;
+}
+function refreshSlot(grp,wi,sl){
+  const el=g(`ms-${grp}-${wi}-${sl}`); if(!el)return;
+  const tmp=document.createElement('div'); tmp.innerHTML=buildSlotHTML(grp,wi,sl);
+  const nEl=tmp.firstElementChild; el.replaceWith(nEl); bindSlot(nEl,grp,wi,sl);
+}
+function bindSlot(el,grp,wi,sl){
+  el.addEventListener('click',e=>{ if(e.target.classList.contains('motm-del'))return; if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;} openMotmModal(grp,wi,sl); });
+  const d=el.querySelector('.motm-del'); if(d) d.addEventListener('click',e=>{ e.stopPropagation(); if(!isAdmin)return; delMOTMSlot(grp,wi,sl); });
+}
+function rebindAllSlots(grp){ WEEKS.forEach((_,wi)=>[0,1,2].forEach(sl=>{ const el=g(`ms-${grp}-${wi}-${sl}`); if(el)bindSlot(el,grp,wi,sl); })); }
+function initMOTMPanels(){
+  ['A','B'].forEach(grp=>{
+    const bodyEl=g('mb'+grp); if(!bodyEl)return; bodyEl.innerHTML='';
+    WEEKS.forEach((wk,wi)=>{
+      if(!Array.isArray(S.motmPhotos[grp][wi]))S.motmPhotos[grp][wi]=[null,null,null];
+      const sec=document.createElement('div'); sec.className='motm-wk-sect';
+      sec.innerHTML=`<div class="motm-wk-label">📅 ${wk}</div><div class="motm-slots" id="mss-${grp}-${wi}">${[0,1,2].map(sl=>buildSlotHTML(grp,wi,sl)).join('')}</div>`;
+      bodyEl.appendChild(sec);
+    });
+    setMOTMView(grp,motmViewState[grp]||'expanded',false);
+    rebindAllSlots(grp);
+  });
+}
+function setMOTMView(grp,mode,sv=true){
+  motmViewState[grp]=mode;
+  const body=g('mb'+grp),hint=g('motmHint'+grp),badge=g('motmBadge'+grp),btnC=g('mtc'+grp),btnE=g('mte'+grp);
+  if(!body)return;
+  if(mode==='collapsed'){ body.classList.remove('expanded');body.classList.add('collapsed');if(hint)hint.style.display='block';if(badge)badge.textContent='Week ล่าสุด';if(btnC)btnC.classList.add('on');if(btnE)btnE.classList.remove('on'); }
+  else{ body.classList.remove('collapsed');body.classList.add('expanded');if(hint)hint.style.display='none';if(badge)badge.textContent='ทั้งหมด';if(btnC)btnC.classList.remove('on');if(btnE)btnE.classList.add('on'); }
+  if(sv)saveData();
+}
+function delMOTMSlot(grp,wi,sl){
+  const d=S.motmPhotos[grp][wi][sl]; const name=d?d.name:'';
+  S.motmPhotos[grp][wi][sl]=null;
+  if(name) S.motm=S.motm.filter(m=>!(m.name===name&&m.week===WEEKS[wi]&&m.grp===grp&&m.slot===sl));
+  refreshSlot(grp,wi,sl); markDirty('motm'); renderMOTMLeaderboard(); renderTop3(); saveData(); toast('🗑️ ลบ MOTM Slot','#c0392b');
+}
+function openMotmModal(grp,wi,sl){
+  motmEditCtx={grp,wi,sl}; const d=(S.motmPhotos[grp][wi]&&S.motmPhotos[grp][wi][sl])||{};
+  motmEditPhoto=d.photo||null; motmEditBg=d.bg||null;
+  const teams=allTeams();
+  ['mm_team','mm_home','mm_away'].forEach(id=>{ const el=g(id); if(!el)return; el.innerHTML=teams.map(n=>`<option value="${n}">${n}</option>`).join(''); });
+  if(d.team)g('mm_team').value=d.team; if(d.home)g('mm_home').value=d.home; if(d.away)g('mm_away').value=d.away;
+  g('mm_name').value=d.name||''; g('mm_photo_url').value=''; g('mm_bg_url').value='';
+  g('motmModalTitle').textContent=`✏️ ${WEEKS[wi]} — คู่ที่ ${sl+1}`;
+  const ph=g('mmPhoto'),pl=g('mmPhotoPlaceholder');
+  if(motmEditPhoto){ph.src=motmEditPhoto;ph.style.display='block';pl.style.display='none';}
+  else{ph.style.display='none';pl.style.display='flex';}
+  g('motmModal').classList.add('show');
+}
+function saveMotmModal(){
+  if(!motmEditCtx)return;
+  const {grp,wi,sl}=motmEditCtx;
+  const uP=g('mm_photo_url').value.trim(),uB=g('mm_bg_url').value.trim();
+  if(uP.startsWith('http'))motmEditPhoto=uP; if(uB.startsWith('http'))motmEditBg=uB;
+  const mname=g('mm_name').value.trim(),mteam=g('mm_team').value,mhome=g('mm_home').value,maway=g('mm_away').value;
+  if(!S.motmPhotos[grp])S.motmPhotos[grp]={};
+  if(!Array.isArray(S.motmPhotos[grp][wi]))S.motmPhotos[grp][wi]=[null,null,null];
+  S.motmPhotos[grp][wi][sl]={name:mname,team:mteam,home:mhome,away:maway,photo:motmEditPhoto,bg:motmEditBg};
+  refreshSlot(grp,wi,sl);
+  if(mname){ const ex=S.motm.find(m=>m.name===mname&&m.team===mteam&&m.week===WEEKS[wi]&&m.grp===grp&&m.slot===sl); if(!ex)S.motm.push({id:uid(),name:mname,team:mteam,week:WEEKS[wi],vs:`${mhome} vs ${maway}`,grp,slot:sl}); markDirty('motm'); renderMOTMLeaderboard(); renderTop3(); }
+  g('motmModal').classList.remove('show'); saveData(); toast(`✅ บันทึก MOTM ${mname||''} สำเร็จ`);
+}
+
+// ══════════════════════════════════════════════
+// TOP 3
+// ══════════════════════════════════════════════
+function renderTop3(){
+  const empty='<div style="text-align:center;padding:18px;color:var(--dim);">ยังไม่มีข้อมูล</div>';
+  const top3sc=[...S.scorers].sort((a,b)=>b.goals-a.goals).slice(0,3);
+  g('top3Scorers').innerHTML=top3sc.length===0?empty:top3sc.map((s,i)=>`<div class="top3-item"><div class="top3-medal ${['m1','m2','m3'][i]||''}">${['🥇','🥈','🥉'][i]||i+1}</div>${tLogo(s.team,30)}<div class="top3-info"><div class="top3-name">${s.name}</div><div class="top3-team">${s.team}</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--green2);">${s.goals}⚽</div></div>`).join('');
+  const mc={};S.motm.forEach(m=>{const k=m.name+'|'+m.team;if(!mc[k])mc[k]={n:m.name,t:m.team,c:0};mc[k].c++;});
+  const top3mo=Object.values(mc).sort((a,b)=>b.c-a.c).slice(0,3);
+  g('top3Motm').innerHTML=top3mo.length===0?empty:top3mo.map((m,i)=>`<div class="top3-item"><div class="top3-medal ${['m1','m2','m3'][i]||''}">${['🥇','🥈','🥉'][i]||i+1}</div>${tLogo(m.t,30)}<div class="top3-info"><div class="top3-name">${m.n}</div><div class="top3-team">${m.t}</div></div><div style="font-size:1.1rem;font-weight:800;color:var(--gold);">${m.c}⭐</div></div>`).join('');
+  const bans=calcActiveBans();
+  g('topBans').innerHTML=bans.length===0?'<div style="text-align:center;padding:18px;color:var(--green2);">ไม่มีผู้ถูกแบน ✅</div>':bans.slice(0,3).map(b=>`<div class="top3-item"><span class="badge ${b.type==='red'?'br':'by'}" style="flex-shrink:0;">${b.type==='red'?'🟥':'🟨🟨'}</span>${tLogo(b.team,28)}<div class="top3-info"><div class="top3-name">${b.name}</div><div class="top3-team">${b.team}</div></div><span class="badge-ban">BAN ${b.banM}นัด</span></div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// ข้อ 4: SCORERS — counter +/−
+// ══════════════════════════════════════════════
+function renderScorers(){
+  const el=g('sc_list'); if(!el)return;
+  const cnt=g('sc_cnt'); if(cnt)cnt.textContent=S.scorers.length+' players';
+  const sorted=[...S.scorers].sort((a,b)=>b.goals-a.goals);
+  if(sorted.length===0){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--dim);">ยังไม่มีข้อมูล</div>';return;}
+  el.innerHTML=sorted.map((p,i)=>`
+    <div class="stat-row">
+      <div class="stat-rank">${['🥇','🥈','🥉'][i]||i+1}</div>
+      ${tLogo(p.team,28)}
+      <div class="stat-info" style="margin-left:4px;">
+        <div class="stat-name">${p.name}</div>
+        <div class="stat-sub">${p.team} · ${p.week}</div>
+      </div>
+      ${isAdmin?`<div class="counter-wrap">
+        <button class="btn-counter minus" data-act="sc-minus" data-id="${p.id}" title="ลดประตู">−</button>
+        <span class="counter-val" style="color:var(--green2);">${p.goals}⚽</span>
+        <button class="btn-counter" data-act="sc-plus" data-id="${p.id}" title="เพิ่มประตู">+</button>
+      </div>`:`<div class="stat-val" style="color:var(--green2);">${p.goals}⚽</div>`}
+      <div class="stat-acts">
+        ${isAdmin?`<button class="btn btn-yellow btn-xs" data-act="edit-scorer" data-id="${p.id}">✏️</button><button class="btn btn-red btn-xs" data-act="del" data-type="scorer" data-id="${p.id}">🗑️</button>`:''}
+      </div>
+    </div>`).join('');
+}
+
+function scAdjGoals(id, delta) {
+  if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+  const sc=S.scorers.find(x=>x.id===id); if(!sc)return;
+  sc.goals=Math.max(0,sc.goals+delta);
+  if(sc.goals===0){ showConfirm(`ลบ ${sc.name} ออก (ประตู=0)?`,()=>{ S.scorers=S.scorers.filter(x=>x.id!==id); markDirty('scorers');renderScorers();renderTop3();saveData(); }); }
+  else{ markDirty('scorers');renderScorers();renderTop3();saveData();toast(`✅ ${sc.name}: ${sc.goals}⚽`); }
+}
+
+// ══════════════════════════════════════════════
+// ข้อ 5: MOTM LEADERBOARD — counter +/−
+// ══════════════════════════════════════════════
+function renderMOTMLeaderboard(){
+  const el=g('mo_list'); if(!el)return;
+  const cnt=g('mo_cnt'); if(cnt)cnt.textContent=S.motm.length+' records';
+  if(S.motm.length===0){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--dim);">ยังไม่มีข้อมูล</div>';return;}
+  const grouped={};
+  S.motm.forEach(m=>{ const k=m.name+'|||'+m.team; if(!grouped[k])grouped[k]={name:m.name,team:m.team,count:0,entries:[]}; grouped[k].count++;grouped[k].entries.push(m); });
+  const sorted=Object.values(grouped).sort((a,b)=>b.count-a.count);
+  el.innerHTML=sorted.map((grp,i)=>{
+    const rank=['🥇','🥈','🥉'][i]||`<span style="color:var(--dim);">${i+1}</span>`;
+    // ข้อ 5: แสดง counter รวมด้านขวา + ปุ่ม +/− ต่อ entry
+    const entries=grp.entries.map(e=>`
+      <div class="motm-lb-entry">
+        <span style="color:var(--teal);flex-shrink:0;">📅 ${e.week}</span>
+        <span style="flex:1;margin:0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.vs||'—'}</span>
+        ${isAdmin?`<div style="display:flex;gap:3px;align-items:center;flex-shrink:0;">
+          <button class="btn-counter minus" style="width:20px;height:20px;font-size:.75rem;" data-act="mo-dup-minus" data-id="${e.id}" title="ลบ entry นี้">−</button>
+          <button class="btn btn-yellow btn-xs" data-act="edit-motm" data-id="${e.id}">✏️</button>
+          <button class="btn btn-red btn-xs" data-act="del" data-type="motm" data-id="${e.id}">🗑️</button>
+        </div>`:''}
+      </div>`).join('');
+    return `<div class="motm-lb-item">
+      <div style="font-size:1.2rem;width:28px;text-align:center;flex-shrink:0;">${rank}</div>
+      ${tLogo(grp.team,36)}
+      <div class="motm-lb-info">
+        <div class="motm-lb-name">${grp.name}</div>
+        <div class="motm-lb-sub">${grp.team}</div>
+        <div class="motm-lb-entries">${entries}</div>
+        ${isAdmin?`<div style="margin-top:8px;"><button class="btn btn-teal btn-xs" data-act="mo-add-entry" data-name="${grp.name}" data-team="${grp.team}">+ เพิ่ม MOTM ครั้งใหม่</button></div>`:''}
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        ${isAdmin?`<div class="counter-wrap" style="flex-direction:column;gap:2px;margin-bottom:4px;">
+          <button class="btn-counter" style="width:22px;height:22px;" data-act="mo-grp-plus" data-name="${grp.name}" data-team="${grp.team}" title="เพิ่ม count">+</button>
+          <div class="motm-count">${grp.count}</div>
+          <button class="btn-counter minus" style="width:22px;height:22px;" data-act="mo-grp-minus" data-name="${grp.name}" data-team="${grp.team}" title="ลด count">−</button>
+        </div>`:`<div class="motm-count">${grp.count}</div>`}
+        <div style="font-size:.55rem;color:var(--dim2);">ครั้ง</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// เพิ่ม MOTM entry ให้กับผู้เล่นที่มีอยู่แล้ว
+function moAddEntry(name, team) {
+  const wk=prompt('Week ที่ได้รับ MOTM? (เช่น WEEK 2)','WEEK 1');
+  if(!wk)return;
+  const vs=prompt('คู่ไหน? (เช่น GSC vs TPE)','');
+  S.motm.push({id:uid(),name,team,week:wk.toUpperCase(),vs:vs||'—',grp:'',slot:0});
+  markDirty('motm');renderMOTMLeaderboard();renderTop3();saveData();toast(`✅ เพิ่ม MOTM ${name} — ${wk}`);
+}
+
+// เพิ่ม count กลุ่มโดยเพิ่ม entry dummy
+function moGrpPlus(name, team) {
+  const lastEntry=S.motm.filter(m=>m.name===name&&m.team===team).slice(-1)[0];
+  const wk=lastEntry?lastEntry.week:'WEEK 1';
+  const vs=lastEntry?lastEntry.vs:'—';
+  S.motm.push({id:uid(),name,team,week:wk,vs,grp:lastEntry?lastEntry.grp:'',slot:0});
+  markDirty('motm');renderMOTMLeaderboard();renderTop3();saveData();toast(`✅ ${name}: +1 MOTM`);
+}
+// ลด count กลุ่มโดยลบ entry ล่าสุด
+function moGrpMinus(name, team) {
+  const entries=S.motm.filter(m=>m.name===name&&m.team===team);
+  if(entries.length===0)return;
+  const last=entries[entries.length-1];
+  showConfirm(`ลด MOTM ${name} (ลบ ${last.week})`,()=>{
+    S.motm=S.motm.filter(m=>m.id!==last.id);
+    markDirty('motm');renderMOTMLeaderboard();renderTop3();saveData();toast(`✅ ${name}: −1 MOTM`,'#c0392b');
+  });
+}
+
+// ══════════════════════════════════════════════
+// ข้อ 1 & 2: SUSPENSIONS
+// ══════════════════════════════════════════════
+
+// คำนวณใบเหลืองสะสมต่อคน
+function calcYellowMap() {
+  const ym={};
+  S.cards.filter(c=>c.card==='yellow').forEach(c=>{
+    const k=c.name+'|'+c.team;
+    if(!ym[k])ym[k]={name:c.name,team:c.team,count:0};
+    ym[k].count++;
+  });
+  return ym;
+}
+
+// ข้อ 2: คำนวณเฉพาะคนที่ถูก BAN จริง
+function calcActiveBans() {
+  const bans=[];
+  // ใบแดงโดยตรง
+  S.cards.filter(c=>c.card==='red').forEach(c=>{
+    bans.push({name:c.name,team:c.team,type:'red',banM:2,reason:'ใบแดงตรง',from:c.from,note:c.note,week:c.week});
+  });
+  // ใบเหลืองสะสมครบทุก 2 ใบ
+  const ym=calcYellowMap();
+  Object.values(ym).forEach(p=>{
+    const bc=Math.floor(p.count/2);
+    for(let i=0;i<bc;i++){
+      bans.push({name:p.name,team:p.team,type:'yellow',banM:1,reason:`ใบเหลืองสะสม ${(i+1)*2} ใบ`,from:'-'});
+    }
+  });
+  return bans;
+}
+
+function renderSuspensions(){
+  // ── Card Records (ข้อ 1: editable) ──
+  const recEl=g('card_records');
+  if(recEl){
+    const rCnt=g('card_rec_cnt'); if(rCnt)rCnt.textContent=S.cards.length+' รายการ';
+    recEl.innerHTML=S.cards.length===0?'<div style="text-align:center;padding:14px;color:var(--dim);">ยังไม่มีรายการ</div>':
+      [...S.cards].reverse().map(c=>`
+        <div class="ycard-rec-row">
+          <span class="ycard-rec-tag ${c.card==='yellow'?'ytag':'rtag'}">${c.card==='yellow'?'🟨 YLW':'🟥 RED'}</span>
+          ${tLogo(c.team,22)}
+          <div class="stat-info">
+            <div style="font-size:.82rem;font-weight:600;">${c.name}</div>
+            <div style="font-size:.67rem;color:var(--dim2);">${c.team} · ${c.week}${c.note?' · '+c.note:''}</div>
+          </div>
+          ${isAdmin?`<div style="display:flex;gap:3px;flex-shrink:0;">
+            <button class="btn btn-yellow btn-xs" data-act="edit-card" data-id="${c.id}">✏️</button>
+            <button class="btn btn-red btn-xs" data-act="del" data-type="card" data-id="${c.id}">🗑️</button>
+          </div>`:''}
+        </div>`).join('');
+  }
+
+  // ── Yellow accumulation ──
+  const ya=g('y_accum');
+  if(ya){
+    const ym=calcYellowMap();
+    const pl=Object.values(ym).sort((a,b)=>b.count-a.count);
+    ya.innerHTML=pl.length===0?'<div style="text-align:center;padding:14px;color:var(--dim);">ยังไม่มีใบเหลืองสะสม</div>':
+      pl.map(p=>{
+        const bc=Math.floor(p.count/2),rem=p.count%2;
+        const pips=Array.from({length:Math.min(p.count,8)},()=>`<span class="pip"></span>`).join('');
+        const badge=bc>0?`<span class="badge-ban">🚫 BAN ${bc}นัด</span>`:(rem===1?`<span class="badge-warn">⚠️ 1 ใบ</span>`:'');
+        return `<div class="ycard-row">${tLogo(p.team,22)}<div style="flex:1;margin-left:6px;"><div style="font-size:.8rem;font-weight:600;">${p.name}</div><div style="font-size:.68rem;color:var(--dim2);">${p.team}</div></div><div class="ycard-pips">${pips}</div><span style="font-size:.7rem;color:var(--dim2);margin:0 5px;">${p.count}ใบ</span>${badge}</div>`;
+      }).join('');
+  }
+
+  // ── ข้อ 2: Active Suspensions เฉพาะคนที่ BAN ──
+  const bans=calcActiveBans();
+  const bl=g('ban_list');
+  if(bl){
+    const cnt=g('ban_cnt'); if(cnt)cnt.textContent=bans.length+' คน';
+    bl.innerHTML=bans.length===0?'<div style="text-align:center;padding:18px;color:var(--green2);">✅ ไม่มีผู้ถูกแบน</div>':
+      bans.map(b=>`
+        <div class="ban-row">
+          <span style="font-size:1.3rem;flex-shrink:0;">${b.type==='red'?'🟥':'🟨🟨'}</span>
+          ${tLogo(b.team,34)}
+          <div class="ban-info">
+            <div class="ban-name">${b.name}</div>
+            <div class="ban-detail">${b.team} · ${b.reason} · BAN เริ่ม ${b.from||'-'}</div>
+          </div>
+          <span class="badge-ban">🚫 BAN ${b.banM}นัด</span>
+        </div>`).join('');
+  }
+}
+
+// ── ข้อ 1: SUSPENSION EDIT ──
+function openSuspEdit(id) {
+  if(!isAdmin)return;
+  const c=S.cards.find(x=>x.id===id); if(!c)return;
+  g('se_id').value=id;
+  g('se_name').value=c.name;
+  g('se_card').value=c.card;
+  g('se_week').value=c.week||WEEKS[0];
+  g('se_from').value=c.from||'';
+  g('se_note').value=c.note||'';
+  // populate team
+  const stEl=g('se_team');
+  stEl.innerHTML=allTeams().map(n=>`<option value="${n}">${n}</option>`).join('');
+  stEl.value=c.team;
+  g('seErr').textContent='';
+  g('suspEditModal').classList.add('show');
+}
+function saveSuspEdit() {
+  const id=parseInt(g('se_id').value);
+  const c=S.cards.find(x=>x.id===id);
+  if(!c){g('seErr').textContent='ไม่พบรายการ';return;}
+  const name=g('se_name').value.trim();
+  if(!name){g('seErr').textContent='กรุณาใส่ชื่อ';return;}
+  c.name=name; c.team=g('se_team').value; c.card=g('se_card').value;
+  c.week=g('se_week').value; c.from=g('se_from').value; c.note=g('se_note').value;
+  g('suspEditModal').classList.remove('show');
+  markDirty('suspensions'); renderSuspensions(); renderTop3(); saveData();
+  toast('✅ แก้ไขรายการสำเร็จ');
+}
+
+// ══════════════════════════════════════════════
+// MATCH LOG
+// ══════════════════════════════════════════════
+function renderMatchLog(){
+  const el=g('match_log'); if(!el)return;
+  const cnt=g('match_cnt'); if(cnt)cnt.textContent=S.matches.length+' matches';
+  el.innerHTML=S.matches.length===0?'<div style="text-align:center;padding:20px;color:var(--dim);">ยังไม่มีผลการแข่งขัน</div>':
+    [...S.matches].reverse().map(m=>{
+      const res=m.s1>m.s2?`<span style="color:var(--green2);font-size:.74rem;">${m.t1} WIN</span>`:m.s1<m.s2?`<span style="color:var(--green2);font-size:.74rem;">${m.t2} WIN</span>`:`<span style="color:var(--gold);font-size:.74rem;">DRAW</span>`;
+      return `<div class="match-row"><div class="match-week">${m.week}<br><span style="background:var(--blue);border:1px solid rgba(0,200,212,.2);padding:1px 5px;border-radius:3px;font-size:.64rem;">GRP ${m.grp}</span></div><div style="text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:5px;">${tLogo(m.t1,22)}<span style="font-weight:600;">${m.t1}</span></div><div class="score-box">${m.s1}–${m.s2}</div><div style="display:flex;align-items:center;gap:5px;"><span style="font-weight:600;">${m.t2}</span>${tLogo(m.t2,22)}</div><div style="text-align:center;">${res}<br>${isAdmin?`<button class="btn btn-red btn-xs" style="margin-top:4px;" data-act="del" data-type="match" data-id="${m.id}">🗑️</button>`:''}</div></div>`;
+    }).join('');
+  const rr=g('r_recent'); if(!rr)return;
+  rr.innerHTML=S.matches.length===0?'<div style="text-align:center;padding:20px;color:var(--dim);">ยังไม่มีแมตช์</div>':
+    [...S.matches].slice(-5).reverse().map(m=>`<div class="match-row"><div class="match-week">${m.week}</div><div style="text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:4px;">${tLogo(m.t1,18)}<span>${m.t1}</span></div><div class="score-box">${m.s1}–${m.s2}</div><div style="display:flex;align-items:center;gap:4px;"><span>${m.t2}</span>${tLogo(m.t2,18)}</div><div></div></div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// RENDER ALL
+// ══════════════════════════════════════════════
+function renderAll(){
+  applyBg(); applyLeagueLogo();
+  renderStandings(); renderScorers(); renderMOTMLeaderboard();
+  renderSuspensions(); renderMatchLog(); renderTop3();
+  initMOTMPanels(); updateBackupStatus();
+}
+
+// ══════════════════════════════════════════════
+// RECORD MATCH
+// ══════════════════════════════════════════════
+function recordMatch(){
+  if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+  const week=g('r_wk').value,grp=g('r_grp').value,t1=g('r_t1').value,t2=g('r_t2').value;
+  const s1=parseInt(g('r_s1').value)||0,s2=parseInt(g('r_s2').value)||0;
+  const scorer=g('r_scorer').value.trim(),goals=parseInt(g('r_goals').value)||1,motmN=g('r_motm').value.trim();
+  if(t1===t2){toast('กรุณาเลือกทีมที่ต่างกัน','#c0392b');return;}
+  initStat(t1);initStat(t2);
+  const T1=S.teamStats[t1],T2=S.teamStats[t2];
+  T1.p++;T2.p++;T1.gf+=s1;T1.ga+=s2;T2.gf+=s2;T2.ga+=s1;
+  if(s1>s2){T1.w++;T1.pts+=3;T2.l++;}else if(s1<s2){T2.w++;T2.pts+=3;T1.l++;}else{T1.d++;T2.d++;T1.pts++;T2.pts++;}
+  S.matches.push({id:uid(),week,grp,t1,t2,s1,s2});
+  if(scorer){const ex=S.scorers.find(x=>x.name===scorer&&x.team===t1);if(ex){ex.goals+=goals;ex.week=week;}else S.scorers.push({id:uid(),name:scorer,team:t1,goals,week});}
+  if(motmN)S.motm.push({id:uid(),name:motmN,team:t1,week,vs:`${t1} vs ${t2}`,grp,slot:0});
+  g('r_scorer').value='';g('r_motm').value='';g('r_s1').value='0';g('r_s2').value='0';
+  ['standings','scorers','motm','results'].forEach(markDirty);
+  renderAll();saveData();toast(`✅ บันทึกผล: ${t1} ${s1}–${s2} ${t2}`);
+}
+
+// ══════════════════════════════════════════════
+// LOGO MANAGER
+// ══════════════════════════════════════════════
+function renderLogoManager(){
+  const grid=g('logoGrid');if(!grid)return;grid.innerHTML='';
+  const sel=g('url_team');if(sel)sel.innerHTML=allTeams().map(n=>`<option value="${n}">${n} ${S.logos[n]?'✅':''}</option>`).join('');
+  const cnt=g('logo_cnt');if(cnt)cnt.textContent=`${allTeams().filter(n=>S.logos[n]).length}/${allTeams().length} ทีม`;
+  allTeams().forEach(name=>{
+    const col=TEAM_COLORS[name]||'#0d1f3c',hasLogo=!!S.logos[name],abbr=name.slice(0,3).toUpperCase(),grpL=S.teamsA.includes(name)?'A':'B';
+    const card=document.createElement('div');card.className='logo-card'+(hasLogo?' has-logo':'');card.id='lc-'+name;
+    const logoIn=hasLogo?`<img src="${S.logos[name]}" alt="${abbr}">`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,${col},${col}cc);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--teal);border-radius:50%;">${abbr}</div>`;
+    card.innerHTML=`<button class="logo-rm" data-name="${name}">✕</button><div class="logo-display" id="ld-${name}">${logoIn}<div class="logo-ov">📸</div></div><div class="logo-tn">${name}</div><div class="logo-tg">Group ${grpL}</div><div class="logo-st ${hasLogo?'lst-ok':'lst-no'}">${hasLogo?'✅ มีโลโก้':'➕ เพิ่ม'}</div>`;
+    card.addEventListener('click',e=>{if(e.target.classList.contains('logo-rm')||e.target.closest('.logo-rm'))return;pendingTeamLogo=name;g('team_logo_f').click();});
+    grid.appendChild(card);
+  });
+}
+function refreshLogoCard(name){
+  const col=TEAM_COLORS[name]||'#0d1f3c',hasLogo=!!S.logos[name],abbr=name.slice(0,3).toUpperCase();
+  const card=g('lc-'+name);if(!card)return;card.className='logo-card'+(hasLogo?' has-logo':'');
+  const ld=g('ld-'+name);if(ld)ld.innerHTML=hasLogo?`<img src="${S.logos[name]}" alt="${abbr}"><div class="logo-ov">📸</div>`:`<div style="width:100%;height:100%;background:linear-gradient(135deg,${col},${col}cc);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--teal);border-radius:50%;">${abbr}</div><div class="logo-ov">📸</div>`;
+  const st=card.querySelector('.logo-st');if(st){st.className='logo-st '+(hasLogo?'lst-ok':'lst-no');st.textContent=hasLogo?'✅ มีโลโก้':'➕ เพิ่ม';}
+  renderAll();
+}
+
+// ══════════════════════════════════════════════
+// TEAM MANAGER
+// ══════════════════════════════════════════════
+function renderTeamManager(){
+  const el=g('tm_list');if(!el)return;
+  el.innerHTML=[...S.teamsA.map(n=>({name:n,grp:'A'})),...S.teamsB.map(n=>({name:n,grp:'B'}))].map(t=>`<div class="stat-row">${tLogo(t.name,28)}<div class="stat-info" style="margin-left:8px;"><div class="stat-name">${t.name}</div><div class="stat-sub">Group ${t.grp}</div></div>${isAdmin?`<button class="btn btn-red btn-xs" data-act="del-team" data-name="${t.name}" data-grp="${t.grp}">🗑️</button>`:''}</div>`).join('');
+}
+function addTeam(){
+  if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+  const name=g('tm_name').value.trim(),grp=g('tm_grp').value;
+  if(!name){toast('กรุณาใส่ชื่อทีม','#c0392b');return;}
+  if(allTeams().includes(name)){toast('ทีมนี้มีอยู่แล้ว','#c0392b');return;}
+  if(grp==='A')S.teamsA.push(name);else S.teamsB.push(name);
+  initStat(name);g('tm_name').value='';populateSelects();renderTeamManager();renderLogoManager();renderAll();saveData();toast(`✅ เพิ่มทีม ${name}`);
+}
+function removeTeam(name,grp){
+  showConfirm(`ลบทีม ${name}`,()=>{
+    if(grp==='A')S.teamsA=S.teamsA.filter(n=>n!==name);else S.teamsB=S.teamsB.filter(n=>n!==name);
+    delete S.teamStats[name];delete S.logos[name];
+    populateSelects();renderTeamManager();renderLogoManager();renderAll();saveData();toast(`🗑️ ลบทีม ${name}`,'#c0392b');
+  });
+}
+
+// ══════════════════════════════════════════════
+// ข้อ 3: BG PICKER — ทำงานจริง
+// ══════════════════════════════════════════════
+function renderBgPicker(){
+  const grid=g('bgGrid');if(!grid)return;
+  let html=`<div class="bg-opt-none ${!S.background?'sel':''}" id="bgNone">🚫 ไม่ใช้ Background</div>`;
+  html+=BG_PRESETS.map(p=>`<div class="bg-opt ${S.background===p.url?'sel':''}" style="background-image:url('${p.url}')" data-url="${p.url}"><div class="bg-opt-lbl">${p.label}</div></div>`).join('');
+  grid.innerHTML=html;
+  g('bgNone').addEventListener('click',()=>{ S.background='';applyBg();renderBgPicker();saveData();toast('✅ ล้าง Background แล้ว'); });
+  grid.querySelectorAll('.bg-opt').forEach(el=>{
+    el.addEventListener('click',()=>{ S.background=el.dataset.url;applyBg();renderBgPicker();saveData();toast('✅ เปลี่ยน Background'); });
+  });
+}
+
+// ══════════════════════════════════════════════
+// BACKUP
+// ══════════════════════════════════════════════
+function exportJSON(includeImages=true){
+  const now=new Date(),dateStr=now.toISOString().slice(0,10).replace(/-/g,''),timeStr=now.toTimeString().slice(0,5).replace(':','');
+  let exp;
+  if(includeImages){exp={...S,_meta:{exportDate:now.toISOString(),exportDateTH:now.toLocaleString('th-TH',{dateStyle:'full',timeStyle:'medium'}),version:'scgc_v32',leagueName:S.leagueName}};}
+  else{const{logos,motmPhotos,background,leagueLogo,...rest}=S;exp={...rest,_meta:{exportDate:now.toISOString(),exportDateTH:now.toLocaleString('th-TH',{dateStyle:'full',timeStyle:'medium'}),version:'scgc_v32',type:'stats_only'}};}
+  const blob=new Blob([JSON.stringify(exp,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=`scgc_backup_${dateStr}_${timeStr}${includeImages?'_full':'_stats'}.json`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  S.lastBackupDate=now.toISOString();saveData();toast('✅ Export .json สำเร็จ!');
+}
+function processImportFile(file){
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.teamsA||!data.teamsB){toast('❌ ไม่ใช่ไฟล์ Backup ของ SCGC League','#c0392b');return;}
+      pendingImportData=data;
+      const meta=data._meta||{};
+      const preview={exportDate:meta.exportDateTH||meta.exportDate||'ไม่ระบุ',leagueName:data.leagueName||'—',teamsA:(data.teamsA||[]).join(', '),teamsB:(data.teamsB||[]).join(', '),matches:(data.matches||[]).length+' รายการ',scorers:(data.scorers||[]).length+' คน',motm:(data.motm||[]).length+' รายการ'};
+      const pt=g('importPreviewTxt');if(pt)pt.textContent=Object.entries(preview).map(([k,v])=>`${k}: ${v}`).join('\n');
+      const ps=g('importPreviewSection');if(ps)ps.style.display='block';
+      const dz=g('bkDropZone');if(dz)dz.style.display='none';
+      toast('📂 โหลดไฟล์สำเร็จ กด "กู้คืน"','#c8a84b');
+    }catch(err){toast('❌ ไฟล์ไม่ถูกต้อง','#c0392b');}
+  };
+  reader.readAsText(file);
+}
+function confirmImport(){
+  if(!pendingImportData)return;
+  if(!confirm('⚠️ กู้คืนจะเขียนทับข้อมูลปัจจุบันทั้งหมด แน่ใจหรือไม่?'))return;
+  const{_meta,...clean}=pendingImportData;Object.assign(S,clean);
+  saveData();pendingImportData=null;cancelImport();populateSelects();renderAll();updateBackupStatus();toast('✅ กู้คืนข้อมูลสำเร็จ!');
+}
+function cancelImport(){pendingImportData=null;const ps=g('importPreviewSection');if(ps)ps.style.display='none';const dz=g('bkDropZone');if(dz)dz.style.display='block';}
+function updateBackupStatus(){
+  const dot=g('backupDot'),txt=g('lastBackupTxt');
+  if(S.lastBackupDate){const d=new Date(S.lastBackupDate),diff=Math.floor((Date.now()-d.getTime())/(1000*60*60));if(dot)dot.className='backup-dot bd-ok';if(txt)txt.innerHTML=`Backup ล่าสุด: <strong style="color:var(--green2);">${d.toLocaleDateString('th-TH',{month:'short',day:'numeric'})} ${d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})}</strong> (${diff<1?'เมื่อกี้':diff+'ชม.ที่แล้ว'})`;}
+  else{if(dot)dot.className='backup-dot bd-warn';if(txt)txt.textContent='⚠️ ยังไม่มี Backup — กด Export เพื่อบันทึก';}
+  const fds=g('fullDataSummary');if(fds){const lc=Object.values(S.logos||{}).filter(v=>v).length;fds.innerHTML=[{v:allTeams().length,l:'ทีม',c:'var(--teal)'},{v:S.matches.length,l:'แมตช์',c:'var(--green2)'},{v:S.scorers.length,l:'Scorers',c:'var(--gold)'},{v:S.motm.length,l:'MOTM',c:'var(--gold)'},{v:S.cards.length,l:'ใบ/แดง',c:'var(--red2)'},{v:lc,l:'โลโก้',c:'#7c4dff'}].map(s=>`<div style="background:var(--card3);border-radius:10px;border:1px solid var(--border);padding:12px;text-align:center;"><div style="font-size:1.6rem;font-weight:900;color:${s.c};">${s.v}</div><div style="font-size:.65rem;color:var(--dim2);margin-top:4px;">${s.l}</div></div>`).join('');}
+}
+
+// ══════════════════════════════════════════════
+// DIRTY
+// ══════════════════════════════════════════════
+const dirty={standings:false,scorers:false,motm:false,suspensions:false,results:false};
+function markDirty(p){dirty[p]=true;const bar=g('ub-'+p);if(!bar)return;bar.classList.add('dirty');const t=g('ubt-'+p);if(t)t.textContent='⚠️ มีการเปลี่ยนแปลง — กด UPDATE';}
+function markClean(p){dirty[p]=false;const bar=g('ub-'+p);if(!bar)return;bar.classList.remove('dirty');const t=g('ubt-'+p);if(t){t.textContent='✅ อัปเดต '+new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});setTimeout(()=>{if(!dirty[p]&&t)t.textContent='ข้อมูลเป็นปัจจุบัน';},3000);}}
+
+// ══════════════════════════════════════════════
+// CONFIRM
+// ══════════════════════════════════════════════
+function showConfirm(label,cb){_confirmCb=cb;g('confirmItem').textContent=label;g('confirmOv').classList.add('show');}
+function hideConfirm(){g('confirmOv').classList.remove('show');_confirmCb=null;}
+
+// ══════════════════════════════════════════════
+// SELECTS
+// ══════════════════════════════════════════════
+function populateSelects(){
+  const teams=allTeams();
+  ['sc_team','mo_team','mo_home','mo_away','su_team','r_t1','r_t2','mm_team','mm_home','mm_away','url_team','se_team'].forEach(id=>{const el=g(id);if(!el)return;const cur=el.value;el.innerHTML=teams.map(n=>`<option value="${n}">${n}</option>`).join('');if(teams.includes(cur))el.value=cur;});
+  ['sc_week','mo_wk','su_week','r_wk','se_week'].forEach(id=>{const el=g(id);if(!el)return;el.innerHTML=WEEKS.map(w=>`<option value="${w}">${w}</option>`).join('');});
+}
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+function switchPage(id){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const btn=document.querySelector(`.nav-btn[data-page="${id}"]`);if(btn)btn.classList.add('active');
+  const page=g('page-'+id);if(page)page.classList.add('active');
+  if(id==='logo-mgr')renderLogoManager();
+  if(id==='team-mgr')renderTeamManager();
+  if(id==='bgpicker')renderBgPicker();
+  if(id==='motm-mgr')renderMOTMLeaderboard();
+  if(id==='backup')updateBackupStatus();
+}
+
+// ══════════════════════════════════════════════
+// MASTER RESET
+// ══════════════════════════════════════════════
+function masterReset(){
+  showConfirm('⚡ RESET DATA (โลโก้ยังคงอยู่)',()=>{
+    const kp=S.adminPassword,kl={...S.logos},kll=S.leagueLogo,kb=S.background,kn=S.leagueName;
+    S={adminPassword:kp,leagueName:kn,background:kb,teamsA:['GSC','REPCONEX','TPE','NPI','MTT&RTC','ROC','DSAM'],teamsB:['SCGC','TMMA','MFC','RMT','MOC','TPC'],teamStats:{},logos:kl,leagueLogo:kll,scorers:[],motm:[],motmPhotos:{A:{},B:{}},cards:[],matches:[],lastBackupDate:null};
+    WEEKS.forEach((_,wi)=>{S.motmPhotos.A[wi]=[null,null,null];S.motmPhotos.B[wi]=[null,null,null];});
+    saveData();populateSelects();renderAll();renderLogoManager();renderTeamManager();toast('⚡ Reset แล้ว! โลโก้ยังคงอยู่','#ff7043');
+  });
+}
+function resetLogosOnly(){showConfirm('🗑️ ล้างโลโก้ทั้งหมด (ข้อมูลอื่นคงอยู่)',()=>{S.logos={};S.leagueLogo=null;saveData();renderLogoManager();renderAll();applyLeagueLogo();toast('🗑️ ล้างโลโก้แล้ว','#ff7043');});}
+
+// ══════════════════════════════════════════════
+// CLOCK
+// ══════════════════════════════════════════════
+function startClock(){const tick=()=>{const cl=g('clock');if(cl)cl.textContent=new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});};tick();setInterval(tick,1000);}
+
+// ══════════════════════════════════════════════
+// BIND ALL EVENTS
+// ══════════════════════════════════════════════
+function bindAll(){
+  // Auth
+  g('loginBtn').addEventListener('click',doLogin);
+  g('viewBtn').addEventListener('click',viewOnlyMode);
+  g('passInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+  g('loginAgainBtn').addEventListener('click',reopenLogin);
+  g('logoutBtn').addEventListener('click',doLogout);
+  g('masterResetBtn').addEventListener('click',masterReset);
+
+  // Pwd
+  g('changePwdBtn').addEventListener('click',()=>g('pwdModal').classList.add('show'));
+  g('pwdCancelBtn').addEventListener('click',()=>g('pwdModal').classList.remove('show'));
+  g('pwdSaveBtn').addEventListener('click',()=>{
+    const o=g('pwd_old').value,n=g('pwd_new').value,c=g('pwd_con').value,err=g('pwdErr');err.textContent='';
+    if(o!==S.adminPassword){err.textContent='❌ รหัสเดิมไม่ถูกต้อง';return;}
+    if(n.length<4){err.textContent='❌ ต้องมีอย่างน้อย 4 ตัว';return;}
+    if(n!==c){err.textContent='❌ รหัสใหม่ไม่ตรงกัน';return;}
+    S.adminPassword=n;saveData();g('pwdModal').classList.remove('show');['pwd_old','pwd_new','pwd_con'].forEach(id=>g(id).value='');g('pwdBar').style.width='0';toast('✅ เปลี่ยนรหัสผ่านสำเร็จ!');
+  });
+  g('pwd_new').addEventListener('input',()=>{
+    const v=g('pwd_new').value;let s=0;if(v.length>=4)s++;if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+    const colors=['#e74c3c','#ff7043','#c8a84b','#38b263','#00c8d4'];
+    g('pwdBar').style.background=s>0?colors[s-1]:'var(--border)';g('pwdBar').style.width=(s>0?(s/5)*100:0)+'%';
+  });
+  document.querySelectorAll('.pwd-eye').forEach(btn=>btn.addEventListener('click',()=>{const inp=g(btn.dataset.target);if(!inp)return;inp.type=inp.type==='password'?'text':'password';btn.textContent=inp.type==='password'?'👁️':'🙈';}));
+
+  // MOTM Modal
+  g('mmCancelBtn').addEventListener('click',()=>g('motmModal').classList.remove('show'));
+  g('mm_save_btn').addEventListener('click',saveMotmModal);
+  g('mmPhotoFileBtn').addEventListener('click',()=>g('mm_photo_f').click());
+  g('mmBgFileBtn').addEventListener('click',()=>g('mm_bg_f').click());
+  g('mm_photo_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;motmEditPhoto=await readFile(f);const ph=g('mmPhoto'),pl=g('mmPhotoPlaceholder');ph.src=motmEditPhoto;ph.style.display='block';pl.style.display='none';e.target.value='';});
+  g('mm_bg_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;motmEditBg=await readFile(f);e.target.value='';});
+  g('mm_photo_url').addEventListener('change',()=>{const u=g('mm_photo_url').value.trim();if(u.startsWith('http')){motmEditPhoto=u;const ph=g('mmPhoto'),pl=g('mmPhotoPlaceholder');ph.src=u;ph.style.display='block';pl.style.display='none';}});
+  g('pwdModal').addEventListener('click',e=>{if(e.target===g('pwdModal'))g('pwdModal').classList.remove('show');});
+  g('motmModal').addEventListener('click',e=>{if(e.target===g('motmModal'))g('motmModal').classList.remove('show');});
+
+  // ข้อ 1: Susp Edit Modal
+  g('seCancelBtn').addEventListener('click',()=>g('suspEditModal').classList.remove('show'));
+  g('seSaveBtn').addEventListener('click',saveSuspEdit);
+  g('suspEditModal').addEventListener('click',e=>{if(e.target===g('suspEditModal'))g('suspEditModal').classList.remove('show');});
+
+  // MOTM view btns
+  document.querySelectorAll('.motm-tb').forEach(btn=>btn.addEventListener('click',()=>setMOTMView(btn.dataset.grp,btn.dataset.mode)));
+  document.querySelectorAll('.motm-more-hint').forEach(el=>el.addEventListener('click',()=>setMOTMView(el.dataset.grp,'expanded')));
+
+  // Confirm
+  g('confirmOk').addEventListener('click',()=>{if(typeof _confirmCb==='function')_confirmCb();hideConfirm();});
+  g('confirmCancel').addEventListener('click',hideConfirm);
+  g('confirmOv').addEventListener('click',e=>{if(e.target===g('confirmOv'))hideConfirm();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){hideConfirm();['motmModal','pwdModal','suspEditModal'].forEach(id=>g(id).classList.remove('show'));}});
+
+  // Nav
+  document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>switchPage(btn.dataset.page)));
+
+  // Scorers form
+  g('sc_submit').addEventListener('click',()=>{
+    if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+    const name=g('sc_name').value.trim(),team=g('sc_team').value,goals=parseInt(g('sc_goals').value)||1,week=g('sc_week').value;
+    if(!name){toast('กรุณาใส่ชื่อ','#c0392b');return;}
+    const eid=parseInt(g('sc_edit_id').value)||0;
+    if(eid){const sc=S.scorers.find(x=>x.id===eid);if(sc){sc.name=name;sc.team=team;sc.goals=goals;sc.week=week;}toast('✅ อัปเดต Scorer');}
+    else{const ex=S.scorers.find(x=>x.name===name&&x.team===team);if(ex){ex.goals+=goals;ex.week=week;}else S.scorers.push({id:uid(),name,team,goals,week});toast('✅ เพิ่ม Scorer');}
+    g('sc_edit_id').value='';g('sc_name').value='';g('sc_goals').value='1';g('sc_hint').style.display='none';g('sc_submit').textContent='💾 บันทึก';
+    markDirty('scorers');renderScorers();renderTop3();saveData();
+  });
+  g('sc_clear').addEventListener('click',()=>{g('sc_edit_id').value='';g('sc_name').value='';g('sc_goals').value='1';g('sc_hint').style.display='none';g('sc_submit').textContent='💾 บันทึก';});
+
+  // MOTM form
+  g('mo_photo_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;curMOPhoto=await readFile(f);const pp=g('mo_photo_prev');if(pp)pp.innerHTML=`<img src="${curMOPhoto}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">`;e.target.value='';});
+  g('mo_bg_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;curMOBg=await readFile(f);const bp=g('mo_bg_prev');if(bp){bp.style.backgroundImage=`url('${curMOBg}')`;bp.textContent='';}e.target.value='';});
+  g('mo_photo_url').addEventListener('change',()=>{const u=g('mo_photo_url').value.trim();if(u.startsWith('http')){curMOPhoto=u;const pp=g('mo_photo_prev');if(pp)pp.innerHTML=`<img src="${u}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">`;}});
+  g('mo_bg_url').addEventListener('change',()=>{const u=g('mo_bg_url').value.trim();if(u.startsWith('http')){curMOBg=u;const bp=g('mo_bg_prev');if(bp){bp.style.backgroundImage=`url('${u}')`;bp.textContent='';}}});
+  g('moPhotoBtn').addEventListener('click',()=>g('mo_photo_f').click());
+  g('moBgBtn').addEventListener('click',()=>g('mo_bg_f').click());
+  g('mo_photo_prev').addEventListener('click',()=>g('mo_photo_f').click());
+  g('mo_submit').addEventListener('click',()=>{
+    if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+    const name=g('mo_name').value.trim(),team=g('mo_team').value,week=g('mo_wk').value,grp=g('mo_grp').value,slot=parseInt(g('mo_slot').value),home=g('mo_home').value,away=g('mo_away').value;
+    if(!name){toast('กรุณาใส่ชื่อผู้เล่น','#c0392b');return;}
+    const vs=`${home} vs ${away}`,editId=parseInt(g('mo_edit_id').value)||0;
+    if(editId){const idx=S.motm.findIndex(m=>m.id===editId);if(idx!==-1)S.motm[idx]={...S.motm[idx],name,team,week,vs,grp,slot};g('mo_edit_id').value='';g('moCancelEdit').style.display='none';g('moFormTitle').textContent='⭐ เพิ่ม Man of the Match';g('mo_hint').style.display='none';g('mo_submit').textContent='💾 บันทึก MOTM';toast('✅ อัปเดต MOTM');}
+    else{S.motm.push({id:uid(),name,team,week,vs,grp,slot});toast(`✅ เพิ่ม MOTM ${name}`);}
+    const wi=WEEKS.indexOf(week);
+    if(wi>=0){if(!S.motmPhotos[grp][wi])S.motmPhotos[grp][wi]=[null,null,null];const ed=S.motmPhotos[grp][wi][slot]||{};S.motmPhotos[grp][wi][slot]={name,team,home,away,photo:curMOPhoto||ed.photo||null,bg:curMOBg||ed.bg||null};refreshSlot(grp,wi,slot);}
+    markDirty('motm');renderMOTMLeaderboard();renderTop3();saveData();
+    g('mo_name').value='';curMOPhoto=null;curMOBg=null;
+    const pp=g('mo_photo_prev');if(pp)pp.innerHTML='<span style="font-size:1.6rem;">📷</span><span style="font-size:.55rem;color:var(--dim2);margin-top:4px;">คลิกเลือก</span>';
+    const bp=g('mo_bg_prev');if(bp){bp.style.backgroundImage='none';bp.textContent='🌄';}
+  });
+  g('mo_clear').addEventListener('click',()=>{g('mo_edit_id').value='';g('mo_name').value='';g('mo_photo_url').value='';g('mo_bg_url').value='';curMOPhoto=null;curMOBg=null;g('moCancelEdit').style.display='none';g('moFormTitle').textContent='⭐ เพิ่ม Man of the Match';g('mo_hint').style.display='none';g('mo_submit').textContent='💾 บันทึก MOTM';});
+  g('moCancelEdit').addEventListener('click',()=>g('mo_clear').click());
+
+  // Suspensions form
+  g('su_submit').addEventListener('click',()=>{
+    if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+    const name=g('su_name').value.trim(),team=g('su_team').value,card=g('su_card').value,week=g('su_week').value,from=g('su_from').value||'-',note=g('su_note').value||'';
+    if(!name){toast('กรุณาใส่ชื่อ','#c0392b');return;}
+    S.cards.push({id:uid(),name,team,card,week,from,note});
+    g('su_name').value='';g('su_from').value='';g('su_note').value='';
+    markDirty('suspensions');renderSuspensions();renderTop3();saveData();toast(`✅ บันทึก ${card==='red'?'🟥 BAN 2นัด':'🟨 ใบเหลือง'} — ${name}`,card==='red'?'#c0392b':'#c8a84b');
+  });
+  g('su_clear').addEventListener('click',()=>{g('su_name').value='';g('su_from').value='';g('su_note').value='';});
+
+  // Record
+  g('rec_submit').addEventListener('click',recordMatch);
+
+  // Update bars
+  [['scorers',renderScorers],['motm',renderMOTMLeaderboard],['susp',renderSuspensions],['results',renderMatchLog]].forEach(([p,fn])=>{const btn=g('btn-upd-'+p);if(!btn)return;btn.addEventListener('click',()=>{fn();markClean(p);});});
+  const ubS=g('btn-upd-standings');if(ubS)ubS.addEventListener('click',()=>{if(!isAdmin)return;renderStandings();markClean('standings');});
+
+  // Logo
+  g('team_logo_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f||!pendingTeamLogo)return;S.logos[pendingTeamLogo]=await readFile(f);refreshLogoCard(pendingTeamLogo);saveData();toast(`✅ อัปโหลดโลโก้ ${pendingTeamLogo}`);pendingTeamLogo=null;e.target.value='';});
+  g('league_logo_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;S.leagueLogo=await readFile(f);applyLeagueLogo();saveData();toast('✅ อัปโหลดโลโก้ League');e.target.value='';});
+  g('leagueLogoBtn').addEventListener('click',()=>{if(isAdmin)g('league_logo_f').click();});
+  g('resetLogosBtn').addEventListener('click',resetLogosOnly);
+  g('url_apply').addEventListener('click',()=>{const url=g('url_logo').value.trim(),team=g('url_team').value;if(!url.startsWith('http')){toast('URL ต้องขึ้นต้นด้วย https://','#c0392b');return;}S.logos[team]=url;refreshLogoCard(team);saveData();g('url_logo').value='';toast(`✅ เพิ่มโลโก้ ${team}`);});
+  g('url_remove').addEventListener('click',()=>{const team=g('url_team').value;if(!S.logos[team]){toast('ทีมนี้ยังไม่มีโลโก้','#c0392b');return;}delete S.logos[team];refreshLogoCard(team);saveData();toast(`🗑️ ลบโลโก้ ${team}`,'#c0392b');});
+  g('logoGrid').addEventListener('click',e=>{const rm=e.target.closest('.logo-rm');if(!rm)return;const name=rm.dataset.name;delete S.logos[name];refreshLogoCard(name);saveData();toast(`🗑️ ลบโลโก้ ${name}`,'#c0392b');});
+
+  // Team
+  g('tm_add').addEventListener('click',addTeam);
+
+  // ข้อ 3: BG — ทุก input
+  g('applyCustomBgBtn').addEventListener('click',()=>{
+    const url=g('custom_bg').value.trim();
+    if(!url){toast('กรุณาใส่ URL','#c0392b');return;}
+    S.background=url;applyBg();renderBgPicker();saveData();toast('✅ เปลี่ยน Background สำเร็จ');
+  });
+  g('bgFileBtn').addEventListener('click',()=>g('bg_f').click());
+  g('clearBgBtn').addEventListener('click',()=>{ S.background='';applyBg();renderBgPicker();saveData();toast('✅ ล้าง Background แล้ว'); });
+  g('bg_f').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;S.background=await readFile(f);applyBg();renderBgPicker();saveData();toast('✅ อัปโหลด BG สำเร็จ');e.target.value='';});
+  g('custom_bg').addEventListener('keydown',e=>{if(e.key==='Enter')g('applyCustomBgBtn').click();});
+
+  // Backup
+  g('exportFullBtn').addEventListener('click',()=>exportJSON(true));
+  g('exportStatsBtn').addEventListener('click',()=>exportJSON(false));
+  g('importPickBtn').addEventListener('click',()=>g('backup_import_f').click());
+  g('backup_import_f').addEventListener('change',e=>{const f=e.target.files[0];if(f)processImportFile(f);e.target.value='';});
+  g('bkDropZone').addEventListener('click',()=>g('backup_import_f').click());
+  g('bkDropZone').addEventListener('dragover',e=>{e.preventDefault();g('bkDropZone').style.borderColor='var(--teal)';});
+  g('bkDropZone').addEventListener('dragleave',()=>{g('bkDropZone').style.borderColor='rgba(0,200,212,.2)';});
+  g('bkDropZone').addEventListener('drop',e=>{e.preventDefault();g('bkDropZone').style.borderColor='rgba(0,200,212,.2)';const f=e.dataTransfer.files[0];if(f&&f.name.endsWith('.json'))processImportFile(f);else toast('❌ กรุณาเลือกไฟล์ .json','#c0392b');});
+  g('confirmImportBtn').addEventListener('click',confirmImport);
+  g('cancelImportBtn').addEventListener('click',cancelImport);
+
+  // Login prompts
+  ['scorersLoginBtn','motmLoginBtn','suspLoginBtn','recLoginBtn'].forEach(id=>{const el=g(id);if(el)el.addEventListener('click',reopenLogin);});
+
+  // ── DELEGATION (click bubbling) ──
+  document.addEventListener('click',e=>{
+    if(g('confirmOv').contains(e.target))return;
+    const btn=e.target.closest('[data-act]');if(!btn)return;
+    const act=btn.dataset.act, id=parseInt(btn.dataset.id), type=btn.dataset.type;
+
+    // ข้อ 4: Scorer counter
+    if(act==='sc-plus'){scAdjGoals(id,+1);return;}
+    if(act==='sc-minus'){scAdjGoals(id,-1);return;}
+
+    // ข้อ 5: MOTM counter
+    if(act==='mo-grp-plus'){moGrpPlus(btn.dataset.name,btn.dataset.team);return;}
+    if(act==='mo-grp-minus'){moGrpMinus(btn.dataset.name,btn.dataset.team);return;}
+    if(act==='mo-dup-minus'){
+      if(!isAdmin)return;
+      const mo=S.motm.find(x=>x.id===id);if(!mo)return;
+      showConfirm(`ลบ ${mo.name} — ${mo.week}`,()=>{S.motm=S.motm.filter(x=>x.id!==id);markDirty('motm');renderMOTMLeaderboard();renderTop3();saveData();toast('🗑️ ลบ MOTM entry','#c0392b');});
+      return;
+    }
+    if(act==='mo-add-entry'){moAddEntry(btn.dataset.name,btn.dataset.team);return;}
+
+    // Edit Scorer
+    if(act==='edit-scorer'){
+      if(!isAdmin)return;
+      const sc=S.scorers.find(x=>x.id===id);if(!sc)return;
+      g('sc_name').value=sc.name;g('sc_team').value=sc.team;g('sc_goals').value=sc.goals;g('sc_week').value=sc.week;
+      g('sc_edit_id').value=id;g('sc_submit').textContent='💾 อัปเดต';g('sc_hint').style.display='block';
+      switchPage('scorers');toast('📝 โหลดข้อมูล','#c8a84b');return;
+    }
+
+    // Edit MOTM
+    if(act==='edit-motm'){
+      if(!isAdmin)return;
+      const mo=S.motm.find(x=>x.id===id);if(!mo)return;
+      g('mo_name').value=mo.name;g('mo_team').value=mo.team;g('mo_wk').value=mo.week;
+      if(mo.grp)g('mo_grp').value=mo.grp;if(mo.slot!==undefined)g('mo_slot').value=mo.slot;
+      if(mo.vs){const p=mo.vs.split(' vs ');if(p[0])g('mo_home').value=p[0].trim();if(p[1])g('mo_away').value=p[1].trim();}
+      g('mo_edit_id').value=id;g('mo_submit').textContent='💾 อัปเดต MOTM';g('mo_hint').style.display='block';g('moCancelEdit').style.display='block';g('moFormTitle').textContent='✏️ แก้ไข MOTM';
+      switchPage('motm-mgr');toast('📝 โหลดข้อมูล','#c8a84b');return;
+    }
+
+    // ข้อ 1: Edit Card
+    if(act==='edit-card'){if(!isAdmin)return;openSuspEdit(id);return;}
+
+    // Delete
+    if(act==='del'){
+      if(!isAdmin){toast('🔒 Login Admin','#ff7043');return;}
+      const typeMap={scorer:'scorers',card:'cards',match:'matches',motm:'motm'};
+      const key=typeMap[type];if(!key)return;
+      let label='รายการนี้';
+      if(type==='scorer'){const s=S.scorers.find(x=>x.id===id);if(s)label=`${s.name} (${s.team})`;}
+      if(type==='card'){const c=S.cards.find(x=>x.id===id);if(c)label=`${c.name} (${c.team}) — ${c.card==='yellow'?'ใบเหลือง':'ใบแดง'}`;}
+      if(type==='match'){const m=S.matches.find(x=>x.id===id);if(m)label=`${m.t1} ${m.s1}–${m.s2} ${m.t2}`;}
+      if(type==='motm'){const mo=S.motm.find(x=>x.id===id);if(mo)label=`${mo.name} — ${mo.week}`;}
+      showConfirm(label,()=>{S[key]=S[key].filter(x=>x.id!==id);renderAll();saveData();toast('🗑️ ลบแล้ว','#c0392b');});
+      return;
+    }
+
+    if(act==='del-team'){if(!isAdmin)return;removeTeam(btn.dataset.name,btn.dataset.grp);}
+  },true);
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+function init(){
+  loadData();
+  allTeams().forEach(n=>initStat(n));
+  populateSelects();
+  bindAll();
+  applyBg();
+  applyLeagueLogo();
+  startClock();
+  setAdminUI(false);
+  renderAll();
+  setInterval(saveData,30000);
+}
+
+let _rt;
+window.addEventListener('resize',()=>{clearTimeout(_rt);_rt=setTimeout(()=>{},150);});
+init();
+</script>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
